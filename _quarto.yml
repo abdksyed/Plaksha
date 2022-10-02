@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Plaksha"
@@ -8,6 +9,15 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+    
+  sidebar:
+    style: "floating"
+    border: true
+    collaps-level: 0
+    contents: 
+    - index.qmd
+    - about.qmd
+    - auto: "*.ipynb" 
 
 format:
   html:

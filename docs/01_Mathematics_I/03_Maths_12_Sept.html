@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.139">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Plaksha – maths_12_sept</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Plaksha</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Plaksha</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../01_Mathematics_I/index.html" class="sidebar-item-text sidebar-link">01 Mathematics I</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/00_LinearAlgebra.html" class="sidebar-item-text sidebar-link">01 Linear Algebra Questionverse</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/01_Maths_09_Sept.html" class="sidebar-item-text sidebar-link">03 Maths Assignment 09th September</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/02_Maths_11_Sept.html" class="sidebar-item-text sidebar-link">04 Maths Assignment 11th September</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/03_Maths_12_Sept.html" class="sidebar-item-text sidebar-link active">05 Maths Assignment 12th September</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/04_Maths_12_Sept_12_24.html" class="sidebar-item-text sidebar-link">06 Maths Assignment 12th September - 12th to 24th Question</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/05_Maths_13_Sept.html" class="sidebar-item-text sidebar-link">07 Maths Assignment 13th Sept</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/06_Maths_PageRank.html" class="sidebar-item-text sidebar-link">08 Assignment - Page Rank</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/07_Maths_Project.html" class="sidebar-item-text sidebar-link">09 Predict the Leader</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../02_Python_Programming/index.html" class="sidebar-item-text sidebar-link">02 Introduction to Prgramming</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Python_Programming/00_MathsAI_TLP.html" class="sidebar-item-text sidebar-link">01 Programming Assignment</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Python_Programming/Programming_Assignment_4.html" class="sidebar-item-text sidebar-link">03 Programming Assignment 4 - File Handling</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#maths-assignment-12th-september" id="toc-maths-assignment-12th-september" class="nav-link active" data-scroll-target="#maths-assignment-12th-september">05 Maths Assignment 12th September</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="maths-assignment-12th-september" class="level1">
+<h1>05 Maths Assignment 12th September</h1>
+<p><strong>Question1</strong></p>
+Consider the matrix
+<span class="math display">\[\begin{bmatrix}
+1 &amp; 2\\
+3 &amp; 4
+\end{bmatrix}\]</span>
+<ul>
+<li>What does it remind you of?</li>
+<li>What does it denote?</li>
+<li>Where and why do we use a matrix?</li>
+<li>Can you enlist a few applications of matrices?</li>
+</ul>
+<p>The above matrix reminds of the system of equations with two equations and two unknowns.</p>
+<p>It denotes two vectors in the 2D-space (<span class="math inline">\(ℝ^2\)</span>) which can also be interpreted as two equations.</p>
+<p>We use a matrix as a function, and also to solve for unknows given equations.</p>
+<p>Matrices are functions which transforms vectors from one space to another space.<br>
+Matrices are used to solve equations as they are represented in a simple manner.<br>
+Matrices helps in storing data like images where elements are values of pixel intensity.</p>
+<p><strong>Question 2</strong></p>
+<p>Define a function. What is a surjective, injective and bijective function?</p>
+<p>A function is a mapping from one space to another space, where each element in the left space(<em>Domain</em>) can have one and only mapping to the element in the right space(<em>Co-domain</em>).<br>
+Function takes an input from Domain and maps it to an element in co-domain.</p>
+<p>There can be two or more elements in Domain mapping to same element in co-domain, but there can never be an element in Domain mapping multiple elements in co-domain.</p>
+<p>A Valid Function</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Injection_keine_Injektion_2a.svg/440px-Injection_keine_Injektion_2a.svg.png" width="20%" height="20%"></p>
+<p>An Invalid Function</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Injection_keine_Injektion_1.svg/440px-Injection_keine_Injektion_1.svg.png" width="20%" height="20%"></p>
+<p>Image Credits: https://en.wikipedia.org/wiki/Function_%28mathematics%29</p>
+<p><strong>Surjective Function</strong></p>
+<p>The onto function, is where every element in <em>co-domain</em> has atleast one pre-image in the <em>domain</em>.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Surjection.svg/360px-Surjection.svg.png" width="20%" height="20%"></p>
+<p>Image Credits: https://en.wikipedia.org/wiki/Surjective_function</p>
+<p><strong>Injective Function</strong></p>
+<p>The one-one function, is where there is only one unique mapping to the element in the co-domain, there can be elements in co-domain which are not mapped, but function must map the elements of the domain to unique element in co-domain.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Injection.svg/360px-Injection.svg.png" width="20%" height="20%"></p>
+<p>Image Credits: https://en.wikipedia.org/wiki/Injective_function</p>
+<p><strong>Bijective Function</strong></p>
+<p>It is the combination of both the <strong>surjection</strong> and <strong>injection</strong> function, where every element in X is mapped to a unique(exactly one) element in Y, and there are no unpaired elements.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Bijection.svg/360px-Bijection.svg.png" width="20%" height="20%"></p>
+<p>Image Credits: https://en.wikipedia.org/wiki/Bijection</p>
+<p><strong>Question 3</strong></p>
+<p>Given an example of a function <span class="math inline">\(f:ℝ^2 → ℝ^2\)</span></p>
+<p>A function which maps from <span class="math inline">\(ℝ^2\)</span> to <span class="math inline">\(ℝ^2\)</span> will be <span class="math inline">\((x,y)\)</span> to <span class="math inline">\((y,x)\)</span>, where the function is mirror reflection along the <span class="math inline">\(x=y\)</span> line</p>
+<p><strong>Question 4</strong></p>
+<p>Given an example of a very nice function <span class="math inline">\(f:ℝ^2 → ℝ^2\)</span> * Make extra efforts to make this function really nice. * Explain what is so nice about your function? * Why should one study such functions?</p>
+<p>A really nice function is the <em>softmax</em> function. The excellent property of this function is it can convert any point in <span class="math inline">\(ℝ^2\)</span> to a probability distribution, which is a vector of probabilities and they are relative to the scale of value in the original vector.</p>
+<p><span class="math inline">\(softmax = \frac{e^{z_i}}{\displaystyle\sum_{j=1}^{k} e^{z_j}}\)</span></p>
+<p>For each value in vector, it exponentiates the value, and divide it by the sum of all values being exponentiated, which gives the sum of all values after applying softmax to 1.</p>
+<p>The important reason to study such functions, is to make use of it for various applications like classification, where a binary classification problem which gives some arbitrary values can be converted to a nice probability looking value.</p>
+<p><strong>Question 7</strong></p>
+<p>Consider <span class="math inline">\(ℝ^2\)</span>. What are all the properties of this set? <span class="math inline">\(ℝ^2\)</span> is called a space of all vectors, a.k.a a vector space. Lookup for the definition of a vector space.</p>
+<p>This set contains all the elements of the form <span class="math inline">\((x,y)\)</span> where <span class="math inline">\(x,y \in ℝ\)</span>. Any vector from this space, when added with another vector from the same space gives a resultant vector, which will also be part of the same space(<span class="math inline">\(ℝ^2\)</span>). Hence it is called the space of all vectors of size 2.</p>
+<p>A vector space can be defined if a set of vectors <span class="math inline">\(V\)</span> and two operations <span class="math inline">\(*, +\)</span> which can be defined in any way, and for our purposes we consider the operatins as general addition and multiplication, must follow the following rules.</p>
+<ol type="1">
+<li>There must be an element 0, where <span class="math inline">\(x+0=x, x \in R^2\)</span></li>
+<li>The vector <span class="math inline">\(\alpha x\)</span> must belong to <span class="math inline">\(ℝ^2\)</span></li>
+<li>Two vectors <span class="math inline">\(x,y \in ℝ^2\)</span> when added <span class="math inline">\(x + y\)</span> must belong to <span class="math inline">\(ℝ^2\)</span></li>
+</ol>
+<p><strong>Question 8</strong></p>
+<p>A subset of a vector space which in itself is a vector space is caled a subspace. Given an example of a subspace of <span class="math inline">\(ℝ^2\)</span>.</p>
+<p>The subspaces of <span class="math inline">\(ℝ^2\)</span> are the zero vector <span class="math inline">\((0,0)\)</span>. Any line <span class="math inline">\(\alpha(x,y)\)</span> and the entire <span class="math inline">\(ℝ^2\)</span> itself.</p>
+<p><strong>Question 9</strong></p>
+<p>Given a vector <span class="math inline">\((1,7)\)</span> what does the set <span class="math inline">\({α(1,7)|α∈ℝ}\)</span> represent? Is it a subspace of <span class="math inline">\(ℝ^2\)</span>?</p>
+<p>The set of all vectors <span class="math inline">\(\alpha(1,7)\)</span> represent a line in <span class="math inline">\(ℝ^2\)</span>, which is a subspace of <span class="math inline">\(ℝ^2\)</span></p>
+<p><strong>Question 10</strong></p>
+<p>Is <span class="math inline">\(ℝ^3\)</span> a vector space?</p>
+<p>Yes, <span class="math inline">\(ℝ^3\)</span> is a <em>subspace</em> as it follows all the 10 axioms of the vector space.</p>
+<p><strong>Question 11</strong></p>
+<p>Conside the two points <span class="math inline">\((1,2,3)\)</span> and <span class="math inline">\((4,5,7)∈ℝ^3\)</span>. What does the following set denote: <span class="math inline">\({α(1,2,3)+β(4,5,7)|α,β∈ℝ}\)</span>. Is this a subspace?</p>
+<p>The following set <span class="math inline">\({α(1,2,3)+β(4,5,7)|α,β∈ℝ}\)</span> denotes the plane in <span class="math inline">\(ℝ^3\)</span>. Since both the vectors <span class="math inline">\((1,2,3)\)</span> and <span class="math inline">\((4,5,7)\)</span> are indepent of each other.</p>
+<p>Yes, the above plane is a subspace of <span class="math inline">\(ℝ^3\)</span></p>
+<p><strong>Question 53</strong></p>
+<p>Solve the following : <span class="math display">\[
+x−2y=15
+\]</span> <span class="math display">\[
+x+4y=19
+\]</span></p>
+<ul>
+<li>Isn’t this the same as <span class="math display">\[
+\begin{equation}
+\begin{bmatrix}
+1 &amp; -2\\
+1 &amp; 4
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+15\\
+19
+\end{bmatrix}
+\end{equation}
+\]</span></li>
+<li>You are trying to find if there is an element in the domain which maps to <span class="math inline">\((15,19)\)</span>.</li>
+<li>What exactly is happening here ? (Say all that you can)</li>
+</ul>
+<p>Yes, <span class="math inline">\((1)\)</span> is just the matrix representation of the system of equations which are needed to be solved.</p>
+<p>Yes, by representing the equations in the matrix form, we are trying to find the unknown <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> which maps to <span class="math inline">\((15,19)\)</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,6 @@
+---
+title: 01 Mathematics I
+description: Computational Thinking and Mathematics by Prof. Sudharshan Iyer
+---
+
+Mathematics for Artificial Intelligence and Data Science
