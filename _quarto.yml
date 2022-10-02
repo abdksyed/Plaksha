@@ -15,9 +15,8 @@ website:
     border: true
     collaps-level: 0
     contents: 
-    - index.qmd
-    - about.qmd
-    - auto: "*.ipynb" 
+    - 01_Mathematics_I/index.qmd
+    - 02_Python_Programming/index.qmd
 
 format:
   html:

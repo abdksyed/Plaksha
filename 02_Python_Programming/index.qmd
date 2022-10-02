@@ -1,6 +1,10 @@
 ---
-title: 02 Introduction to Prgramming
+title: Introduction to Prgramming
 description: Introduction to Python Programming by Prof. Sudharshan Iyer
 ---
 
-Introduction to Programming
+[Assignemnt 1-3](00_Assignment.ipynb)
+
+[Assignemnt 4](Programming_Assignment_4.ipynb)
+
+[Median](findMedian.py)

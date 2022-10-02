@@ -1,6 +1,21 @@
 ---
-title: 01 Mathematics I
-description: Computational Thinking and Mathematics by Prof. Sudharshan Iyer
+title: Mathematics I
+description: Mathematics for Artificial Intelligence and Data Science by Prof. Sudharshan Iyer
 ---
 
-Mathematics for Artificial Intelligence and Data Science
+
+[Linear Algebra Questionverse](00_LinearAlgebra.ipynb)
+
+[9th September Notes](01_Maths_09_Sept.ipynb)
+
+[11th September Notes](02_Maths_11_Sept.ipynb)
+
+[12th September Notes](03_Maths_12_Sept.ipynb)
+
+[12th September Problems](04_Maths_12_Sept_12_24.ipynb)
+
+[13th September Notes](05_Maths_13_Sept.ipynb)
+
+[Page Rank](06_Maths_PageRank.ipynb)
+
+[Project - Predict Leader](07_Maths_Project.ipynb)
