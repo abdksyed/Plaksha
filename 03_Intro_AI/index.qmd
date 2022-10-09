@@ -1,0 +1,6 @@
+---
+title: Introduction to Artificial Intelligence
+description: Introduction to Artificial Intelligence by Dr. Saumya Jetley
+---
+
+[AI Today compared to Dartmouth Workshop](01_Lab01.qmd)

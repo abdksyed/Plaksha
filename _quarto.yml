@@ -17,6 +17,7 @@ website:
     contents: 
     - 01_Mathematics_I/index.qmd
     - 02_Python_Programming/index.qmd
+    - 03_Intro_AI/index.qmd
 
 format:
   html:
