@@ -22,7 +22,7 @@ We humans from childhood start learning patterns from what we see even without m
 Another common method today to build AI is how humans build intelligence by playing games and practising. AI today is trained to play games by playing against itself a very large number of times and to self-improve with time, which was also part of the proposal in the workshop.
 
 
-**Your commentary on the long-term implications of the workshop.**
+**Commentary on the long-term implications of the workshop.**
 
 The workshop was the spark to start a huge field, which went through multiple ups and downs. The idea of computers being able to simulate or solve any real-world problem is still not achieved, but the progress so far has been great with various successes in the field of vision and language. The workshop brainstormed about different problems computers can solve on their own, and made people think about computers as not just tools to perform instructions but as intelligent beings.
 
