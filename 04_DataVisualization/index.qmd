@@ -1,0 +1,6 @@
+---
+title: Data Visualization
+description: Data Visualization by Dr. Venkatesh Rajamanickam
+---
+
+[Data Visualiation on iHerb Mask Dataset](02_MaskEDA.ipynb)
