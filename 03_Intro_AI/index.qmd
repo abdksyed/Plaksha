@@ -4,3 +4,7 @@ description: Introduction to Artificial Intelligence by Dr. Saumya Jetley
 ---
 
 [AI Today compared to Dartmouth Workshop](01_Lab01.qmd)
+
+[A* Algorithm](02_Lab2_Submission_A_Star.ipynb)
+
+[Backward and Forward Chainning](03_Lab4_Chainning.ipynb)
