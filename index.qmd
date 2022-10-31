@@ -5,3 +5,10 @@ title: "Plaksha"
 Thie website contains all the content regarding TLP 2022-23
 
 
+[Mathematics I](01_Mathematics_I/index.qmd)
+
+[Introduction to Programming](02_Python_Programming/index.qmd)
+
+[Introduction to Artificial Intelligence](03_Intro_AI/index.qmd)
+
+[Data Visualization](04_DataVisualization/index.qmd)
