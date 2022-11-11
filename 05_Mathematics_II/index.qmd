@@ -1,0 +1,8 @@
+---
+title: Mathematics II
+description: Mathematics by Dr. Sebastien Foucaud
+---
+
+[Independence Test for Grocery Shop Mailer Type](01_Chi_Square.ipynb)
+
+[Principal Component Analysis](02_PCA.ipynb)

@@ -1,0 +1,43 @@
+---
+title: "Managing Oneself"
+desciption: "Understanding your Strengths"
+author: Abdul Khader, Syed
+format:
+    html:
+        code-fold: false
+    pdf: 
+        date: 11 November 2022
+execute: 
+  enabled: true
+---
+
+## The Idea in Brief
+
+If you have got ambition, drive and smarts you can rise to top of your field.
+
+Cultivate deep understanding of yourself
+
+* What are your most valuble strengths and most dangerous weaknesses?
+* How do you learn and work with others?
+* What are your most deeply held values?
+
+Only when you operate from combination of your strengths and self-knowledge you can acheive true and lasting *excellence*
+
+## The Idea in Practice
+
+**What are my strengths**
+
+Everytime you make a key decision, write down outcome you expect.
+
+Several months later, look for patterns in what you're seeing.
+
+Don't waste time cultivating skill areas you have little competence. INstead concentrate on and build on *your strengths*
+
+**How do I work**
+
+Understand how you work best.
+
+* Reading
+* Listening others discuss
+* 
+
