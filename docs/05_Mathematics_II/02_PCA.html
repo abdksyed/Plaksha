@@ -245,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sb</span>
@@ -257,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="determine-pca-of-a-3x2-matrix">Determine PCA of a 3x2 matrix</h3>
 <section id="define-a-matrix" class="level4">
 <h4 class="anchored" data-anchor-id="define-a-matrix">define a matrix</h4>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>]])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -269,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="first-do-it-manually" class="level4">
 <h4 class="anchored" data-anchor-id="first-do-it-manually">First do it manually!</h4>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> A[:,<span class="dv">0</span>]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> A[:,<span class="dv">1</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X, Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -280,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="subtract-the-mean-of-each-variable" class="level4">
 <h4 class="anchored" data-anchor-id="subtract-the-mean-of-each-variable">1. Subtract the mean of each variable</h4>
-<div class="cell" data-execution_count="50">
+<div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mean_sub_X <span class="op">=</span> X <span class="op">-</span> np.mean(X)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mean_sub_Y <span class="op">=</span> Y <span class="op">-</span> np.mean(Y)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -297,7 +297,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="calculate-the-covariance-matrix" class="level4">
 <h4 class="anchored" data-anchor-id="calculate-the-covariance-matrix">2. Calculate the Covariance Matrix</h4>
-<div class="cell" data-execution_count="36">
+<div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>var_X <span class="op">=</span> np.<span class="bu">sum</span>(mean_sub_X<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="bu">len</span>(X)<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>var_Y <span class="op">=</span> np.<span class="bu">sum</span>(mean_sub_Y<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="bu">len</span>(Y)<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>cov_XY <span class="op">=</span> np.<span class="bu">sum</span>(mean_sub_X <span class="op">*</span> mean_sub_Y)<span class="op">/</span>(<span class="bu">len</span>(X)<span class="op">-</span><span class="dv">1</span>)</span>
@@ -315,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="compute-the-eigenvalues-and-eigenvectors" class="level4">
 <h4 class="anchored" data-anchor-id="compute-the-eigenvalues-and-eigenvectors">3. Compute the Eigenvalues and Eigenvectors</h4>
-<div class="cell" data-execution_count="40">
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>eig_values, eig_vectors <span class="op">=</span> np.linalg.eig(cov_matrix)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eig_values)</span>
@@ -329,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="project-data-of-the-original-matrix-to-the-new-basis" class="level4">
 <h4 class="anchored" data-anchor-id="project-data-of-the-original-matrix-to-the-new-basis">4. project data of the original matrix to the new basis</h4>
-<div class="cell" data-execution_count="51">
+<div class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>prin_eig_vector <span class="op">=</span> eig_vectors[:,<span class="dv">0</span>].reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>projected_A <span class="op">=</span> np.matmul(mean_matrix, prin_eig_vector)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -340,10 +340,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  [ 2.82842712]]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>projected_A <span class="op">=</span> np.matmul(mean_matrix, eig_vectors)</span>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>projected_matrix <span class="op">=</span> np.matmul(mean_matrix, eig_vectors)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(projected_A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(projected_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[-2.82842712  0.        ]
  [ 0.          0.        ]
@@ -353,6 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="conclusion" class="level4">
 <h4 class="anchored" data-anchor-id="conclusion">conclusion?</h4>
+<p>The Eigen values are 8 and 0 for two columns respectively, since the second eigen value is 0, there is no extra information in the second column aftert transformation, and hence can be dropped after performing the PCA transformation. And can consider only the first column.</p>
 </section>
 </section>
 </section>
@@ -362,52 +363,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="ok-lets-do-it-again-but-for-a-larger-matrix-20x5">Ok Let’s do it again but for a larger matrix 20x5</h3>
 <section id="generate-a-dummy-dataset." class="level4">
 <h4 class="anchored" data-anchor-id="generate-a-dummy-dataset.">Generate a dummy dataset.</h4>
-<div class="cell" data-execution_count="54">
+<div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.random.randint(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">100</span>).reshape(<span class="dv">20</span>,<span class="dv">5</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[48 46 26 47 15]
- [37 30 13 16 11]
- [33 19 43 45 41]
- [11 49 21 26 16]
- [43 23 42 21 45]
- [21 20 33 22 17]
- [13 43 38 13 25]
- [10 40 47 12 31]
- [26 39 36 41 25]
- [47 39 40 13 23]
- [40 15 20 18 29]
- [25 19 30 13 38]
- [46 46 36 36 30]
- [29 27 33 17 43]
- [27 11 27 32 31]
- [46 15 49 17 13]
- [10 27 21 20 42]
- [32 23 28 47 37]
- [19 20 19 37 28]
- [39 37 13 18 46]]</code></pre>
+<pre><code>[[42 21 35 14 10]
+ [20 41 26 46 31]
+ [36 37 19 24 20]
+ [37 14 14 17 12]
+ [42 14 38 17 29]
+ [46 35 27 42 35]
+ [19 34 32 12 49]
+ [37 19 30 22 39]
+ [14 46 34 40 43]
+ [13 10 44 25 33]
+ [30 48 27 24 36]
+ [12 39 45 49 24]
+ [11 36 34 10 14]
+ [14 36 15 38 44]
+ [40 29 13 15 42]
+ [44 39 17 21 26]
+ [17 20 26 14 48]
+ [38 34 48 10 40]
+ [39 37 42 48 14]
+ [42 27 28 18 44]]</code></pre>
 </div>
 </div>
 </section>
 <section id="subtract-the-mean-of-each-variable-1" class="level4">
 <h4 class="anchored" data-anchor-id="subtract-the-mean-of-each-variable-1">1. Subtract the mean of each variable</h4>
 <p>Subtract the mean of each variable from the dataset so that the dataset should be centered on the origin. Doing this proves to be very helpful when calculating the covariance matrix.</p>
-<div class="cell" data-execution_count="57">
+<div class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>central_X <span class="op">=</span> X <span class="op">-</span> np.mean(X, axis <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calculate-the-covariance-matrix-1" class="level4">
 <h4 class="anchored" data-anchor-id="calculate-the-covariance-matrix-1">2. Calculate the Covariance Matrix</h4>
 <p>Calculate the Covariance Matrix of the mean-centered data.</p>
-<div class="cell" data-execution_count="63">
+<div class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cov_mat <span class="op">=</span> np.cov(central_X, rowvar<span class="op">=</span> <span class="va">False</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cov_mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[170.51578947 -11.04210526  14.02631579  27.25789474 -11.71578947]
- [-11.04210526 142.88421053  -1.26315789   4.29473684 -31.70526316]
- [ 14.02631579  -1.26315789 115.56578947  -8.59210526   1.65789474]
- [ 27.25789474   4.29473684  -8.59210526 152.15526316  -0.38421053]
- [-11.71578947 -31.70526316   1.65789474  -0.38421053 124.43157895]]</code></pre>
+<pre><code>[[165.08157895 -26.23157895 -28.11052632 -37.31052632 -33.65526316]
+ [-26.23157895 121.11578947  -7.32631579  66.95789474  13.08421053]
+ [-28.11052632  -7.32631579 111.90526316  16.56842105 -12.26842105]
+ [-37.31052632  66.95789474  16.56842105 178.53684211 -12.99473684]
+ [-33.65526316  13.08421053 -12.26842105 -12.99473684 156.66052632]]</code></pre>
 </div>
 </div>
 <p>Note: the matrix is symmetrical</p>
@@ -415,17 +416,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="compute-the-eigenvalues-and-eigenvectors-1" class="level4">
 <h4 class="anchored" data-anchor-id="compute-the-eigenvalues-and-eigenvectors-1">3. Compute the Eigenvalues and Eigenvectors</h4>
 <p>Now, compute the Eigenvalues and Eigenvectors for the calculated Covariance matrix.</p>
-<div class="cell" data-execution_count="65">
+<div class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>eig_values, eig_vectors <span class="op">=</span> np.linalg.eig(cov_mat)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eig_values)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eig_vectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The above Eigen Vectors is column wise for each eigen value</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting it to Row wise</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>eig_vectors <span class="op">=</span> eig_vectors.T</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eig_values)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eig_vectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[192.23491266  93.85426343 109.83323135 142.13500569 167.49521844]
-[[-0.82807804  0.32074703  0.19240712 -0.40855266  0.0864426 ]
- [ 0.06909195  0.52525953 -0.27601475 -0.02724021 -0.80150019]
- [-0.08997667 -0.32028944 -0.82894023 -0.44194624  0.08282805]
- [-0.53754786 -0.23136264 -0.267451    0.75411837 -0.13148791]
- [ 0.11162238  0.68198957 -0.35794331  0.26140331  0.5709427 ]]</code></pre>
+<pre><code>[253.01066884 181.35485507 141.1469473   88.82152611  68.96600268]
+[[-0.52753037  0.45832807  0.15014975  0.68623713  0.13483595]
+ [ 0.43675002  0.09465772  0.05213214  0.41635417 -0.79007644]
+ [-0.49880679 -0.41149083  0.64073475 -0.17512103 -0.37504492]
+ [-0.52633992  0.11431773 -0.66767148 -0.24624489 -0.45108313]
+ [-0.0715486  -0.77368084 -0.34410909  0.51422163  0.11603365]]</code></pre>
 </div>
 </div>
 <p>Note: The Eigenvectors of the Covariance matrix we get are Orthogonal to each other and each vector represents a principal axis. A Higher Eigenvalue corresponds to a higher variability. Hence the principal axis with the higher Eigenvalue will be an axis capturing higher variability in the data.</p>
@@ -433,16 +437,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="sort-eigenvalues-in-descending-order" class="level4">
 <h4 class="anchored" data-anchor-id="sort-eigenvalues-in-descending-order">4. Sort Eigenvalues in descending order</h4>
 <p>Sort the Eigenvalues in the descending order along with their corresponding Eigenvector.</p>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>desc_order <span class="op">=</span> np.argsort(eig_values)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>eig_values <span class="op">=</span> eig_values[desc_order]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>eig_vectors <span class="op">=</span> eig_vectors[desc_order]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eig_values)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eig_vectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[253.01066884 181.35485507 141.1469473   88.82152611  68.96600268]
+[[-0.52753037  0.45832807  0.15014975  0.68623713  0.13483595]
+ [ 0.43675002  0.09465772  0.05213214  0.41635417 -0.79007644]
+ [-0.49880679 -0.41149083  0.64073475 -0.17512103 -0.37504492]
+ [-0.52633992  0.11431773 -0.66767148 -0.24624489 -0.45108313]
+ [-0.0715486  -0.77368084 -0.34410909  0.51422163  0.11603365]]</code></pre>
+</div>
+</div>
 <p>Note: Each column in the Eigen vector-matrix corresponds to a principal component, so arranging them in descending order of their Eigenvalue will automatically arrange the principal component in descending order of their variability. Hence the first column in our rearranged Eigen vector-matrix will be a principal component that captures the highest variability.</p>
 </section>
 <section id="select-a-subset-from-the-rearranged-eigenvalue-matrix" class="level4">
 <h4 class="anchored" data-anchor-id="select-a-subset-from-the-rearranged-eigenvalue-matrix">5. Select a subset from the rearranged Eigenvalue matrix</h4>
 <p>Select a subset of n first eigenvectors from the rearranged Eigenvector matrix as per our need, n is desired dimension of your final reduced data. i.e.&nbsp;“n_components=2” means you selected the first two principal components.</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>n_components <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>desired_eig_vectors <span class="op">=</span> eig_vectors[:<span class="dv">2</span>]</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(desired_eig_vectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[-0.52753037  0.45832807  0.15014975  0.68623713  0.13483595]
+ [ 0.43675002  0.09465772  0.05213214  0.41635417 -0.79007644]]</code></pre>
+</div>
+</div>
 <p>Note: The final dimensions of X_reduced will be ( 20, 2 ) and originally the data was of higher dimensions ( 20, 5 ).</p>
 </section>
 <section id="transform-the-data" class="level4">
 <h4 class="anchored" data-anchor-id="transform-the-data">6. Transform the data</h4>
 <p>Finally, transform the data by having a dot product between the Transpose of the Eigenvector subset and the Transpose of the mean-centered data. By transposing the outcome of the dot product, the result we get is the data reduced to lower dimensions from higher dimensions.</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>projected_matrix <span class="op">=</span> np.matmul(central_X, desired_eig_vectors.T)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(projected_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[-2.08844995e+01  1.71428703e+01]
+ [ 2.33275256e+01  5.69006310e+00]
+ [-4.57773329e+00  1.14655567e+01]
+ [-2.22799056e+01  1.28706507e+01]
+ [-1.90217522e+01  2.87427279e+00]
+ [ 4.80631252e+00  1.17040271e+01]
+ [ 6.42642644e-01 -2.34739157e+01]
+ [-1.05141129e+01 -5.07223941e+00]
+ [ 2.74861549e+01 -8.01913353e+00]
+ [ 1.37345567e+00 -9.68678831e+00]
+ [ 6.98763100e+00 -2.33787436e+00]
+ [ 3.05988175e+01  9.77685579e+00]
+ [-1.18913037e-02  1.45630833e-01]
+ [ 1.88123905e+01 -1.15790063e+01]
+ [-1.44651211e+01 -8.98636706e+00]
+ [-9.43131532e+00  9.05508688e+00]
+ [-4.38214982e+00 -2.43626320e+01]
+ [-9.56403624e+00 -8.06357138e+00]
+ [ 1.29537954e+01  2.87078047e+01]
+ [-1.18562084e+01 -7.85129066e+00]]</code></pre>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -452,15 +509,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="now-lets-just-combine-everything-above-by-making-a-function-and-try-our-principal-component-analysis-from-scratch-on-an-example.">Now, let’s just combine everything above by making a function and try our Principal Component analysis from scratch on an example.</h3>
 <section id="create-a-pca-function-accepting-data-matrix-and-the-number-of-components-as-input-arguments." class="level4">
 <h4 class="anchored" data-anchor-id="create-a-pca-function-accepting-data-matrix-and-the-number-of-components-as-input-arguments.">Create a PCA function accepting data matrix and the number of components as input arguments.</h4>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PCA(data, num_components):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Finding the Centralised Matrix (Matrix - Column Mean)</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    central_X <span class="op">=</span> data <span class="op">-</span> np.mean(data, axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Finding the Co-Variance Matrix</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    cov_mat <span class="op">=</span> np.cov(central_X, rowvar<span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Finding the Eigen Values and Eigen Vectors</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    eig_values, eig_vectors <span class="op">=</span> np.linalg.eig(cov_mat)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Eigen vectors are column wise, making them row wise</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    eig_vectors <span class="op">=</span> eig_vectors.T</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking the Descinding order of Eigen Values</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># and their corresponding Eigen Vectors</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    desc_order <span class="op">=</span> np.argsort(eig_values)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    eig_values <span class="op">=</span> eig_values[desc_order]</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    eig_vectors <span class="op">=</span> eig_vectors[desc_order]</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Desired Eigen Vectors</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    desired_eig_vectors <span class="op">=</span> eig_vectors[:num_components]</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    projected_matrix <span class="op">=</span> np.matmul(central_X, desired_eig_vectors.T)</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> projected_matrix, eig_values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="lets-use-the-iris-dataset-to-test-our-pca-function-and-by-the-same-way-see-if-we-can-classify-the-dataset-in-the-projected-space" class="level4">
 <h4 class="anchored" data-anchor-id="lets-use-the-iris-dataset-to-test-our-pca-function-and-by-the-same-way-see-if-we-can-classify-the-dataset-in-the-projected-space">Let’s use the IRIS dataset to test our PCA function, and by the same way see if we can classify the dataset in the projected space</h4>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Get the IRIS dataset</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(url, names<span class="op">=</span>[<span class="st">'sepal length'</span>,<span class="st">'sepal width'</span>,<span class="st">'petal length'</span>,<span class="st">'petal width'</span>,<span class="st">'target'</span>])</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Get the IRIS dataset</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(url, names<span class="op">=</span>[<span class="st">'sepal length'</span>,<span class="st">'sepal width'</span>,<span class="st">'petal length'</span>,<span class="st">'petal width'</span>,<span class="st">'target'</span>])</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
 
 <div>
 
@@ -524,15 +607,237 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="prepare-the-dataset-target-set-for-classification" class="level4">
 <h4 class="anchored" data-anchor-id="prepare-the-dataset-target-set-for-classification">1. prepare the dataset &amp; target set for classification</h4>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> data.iloc[:,<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.iloc[:,:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(target.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   sepal length  sepal width  petal length  petal width
+0           5.1          3.5           1.4          0.2
+1           4.9          3.0           1.4          0.2
+2           4.7          3.2           1.3          0.2
+3           4.6          3.1           1.5          0.2
+4           5.0          3.6           1.4          0.2
+0    Iris-setosa
+1    Iris-setosa
+2    Iris-setosa
+3    Iris-setosa
+4    Iris-setosa
+Name: target, dtype: object</code></pre>
+</div>
+</div>
 </section>
 <section id="apply-the-pca-function" class="level4">
 <h4 class="anchored" data-anchor-id="apply-the-pca-function">2. Apply the PCA function</h4>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>reduced_data_2, eig_val_2 <span class="op">=</span> PCA(data.to_numpy(), <span class="dv">2</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>reduced_data_1, eig_val_2 <span class="op">=</span> PCA(data.to_numpy(), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="create-a-pandas-dataframe-of-reduced-dataset-with-target-data" class="level4">
 <h4 class="anchored" data-anchor-id="create-a-pandas-dataframe-of-reduced-dataset-with-target-data">3. Create a Pandas Dataframe of reduced Dataset with target data</h4>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>reduced_df1 <span class="op">=</span> np.c_[reduced_data_1, target]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>reduced_df1 <span class="op">=</span> pd.DataFrame(reduced_df1)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>reduced_df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-2.684207</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-2.715391</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-2.88982</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-2.746437</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.728593</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>1.944017</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>1.525664</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>1.764046</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>1.901629</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>1.389666</td>
+      <td>Iris-virginica</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 2 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>reduced_df <span class="op">=</span> np.c_[reduced_data_2, target]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>reduced_df <span class="op">=</span> pd.DataFrame(reduced_df)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>reduced_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-2.684207</td>
+      <td>-0.326607</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-2.715391</td>
+      <td>0.169557</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-2.88982</td>
+      <td>0.137346</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-2.746437</td>
+      <td>0.311124</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.728593</td>
+      <td>-0.333925</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>1.944017</td>
+      <td>-0.187415</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>1.525664</td>
+      <td>0.375021</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>1.764046</td>
+      <td>-0.078519</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>1.901629</td>
+      <td>-0.115877</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>1.389666</td>
+      <td>0.282887</td>
+      <td>Iris-virginica</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 3 columns</p>
+</div>
+</div>
+</div>
 </section>
 <section id="vizualize-the-data-with-one-and-two-principal-components" class="level4">
 <h4 class="anchored" data-anchor-id="vizualize-the-data-with-one-and-two-principal-components">4. Vizualize the data with one and two principal components</h4>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {cat:color <span class="cf">for</span> cat,color <span class="kw">in</span> <span class="bu">zip</span>(target.unique(), [<span class="st">'tab:blue'</span>,<span class="st">'tab:orange'</span>,<span class="st">'tab:green'</span>,<span class="st">'tab:red'</span>,<span class="st">'tab:purple'</span>,<span class="st">'tab:brown'</span>,<span class="st">'tab:pink'</span>])}</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(reduced_df1[<span class="dv">0</span>], reduced_df1[<span class="dv">0</span>], c<span class="op">=</span>reduced_df1[<span class="dv">1</span>].<span class="bu">map</span>(colors))</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'equal'</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.legend(title='color', handles=handles, bbox_to_anchor=(1.05, 1), loc='upper left')</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="02_PCA_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {cat:color <span class="cf">for</span> cat,color <span class="kw">in</span> <span class="bu">zip</span>(target.unique(), [<span class="st">'tab:blue'</span>,<span class="st">'tab:orange'</span>,<span class="st">'tab:green'</span>,<span class="st">'tab:red'</span>,<span class="st">'tab:purple'</span>,<span class="st">'tab:brown'</span>,<span class="st">'tab:pink'</span>])}</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(reduced_df[<span class="dv">0</span>], reduced_df[<span class="dv">1</span>], c<span class="op">=</span>reduced_df[<span class="dv">2</span>].<span class="bu">map</span>(colors))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'equal'</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.legend(title='color', handles=handles, bbox_to_anchor=(1.05, 1), loc='upper left')</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="02_PCA_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="conclusion-1" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion-1">5. Conclusion</h4>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.cumsum(eig_val_2<span class="op">/</span>eig_val_2.<span class="bu">sum</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.92461621 0.97763178 0.99481691 1.        ]</code></pre>
+</div>
+</div>
+<p>As we can see, the first column after transformation will have 92.46% of the original data, and if we take the first two component of the eigen vectors set, and use those to generate the data, we can get 97.76% of the original data.</p>
 </section>
 </section>
 </section>

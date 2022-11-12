@@ -8,3 +8,9 @@ description: Introduction to Artificial Intelligence by Dr. Saumya Jetley
 [A* Algorithm](02_Lab2_Submission_A_Star.ipynb)
 
 [Backward and Forward Chainning](03_Lab4_Chainning.ipynb)
+
+[POS Tagging using Hidden Markov Model](04_Lab5_HMM.ipynb)
+
+[Learnig Gates using Single and Multi Layer Perceptron](05_Lab6_MLP.ipynb)
+
+<!-- [Backward and Forward Chainning](06_Article.qmd) -->
