@@ -20,7 +20,6 @@ website:
     - 03_Intro_AI/index.qmd
     - 04_DataVisualization/index.qmd
     - 05_Mathematics_II/index.qmd
-    - 06_Foundations_of_Leadership/index.qmd
 
 
 format:

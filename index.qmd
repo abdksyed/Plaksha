@@ -14,5 +14,3 @@ Thie website contains all the content regarding TLP 2022-23
 [Data Visualization](04_DataVisualization/index.qmd)
 
 [Mathematics II](05_Mathematics_II/index.qmd)
-
-[Foundations of Leadership](06_Foundation_of_Leadership/index.qmd)

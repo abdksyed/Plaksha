@@ -1,7 +1,0 @@
----
-title: Foundations of Leadership
-description: Foundations of Leadership by Dr. Dwight Jaggard
----
-
-[Managing Oneself by Peter Drucker](01_ManagingOneself.qmd)
-
