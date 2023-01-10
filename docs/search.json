@@ -130,7 +130,7 @@
     "href": "index.html",
     "title": "Plaksha",
     "section": "",
-    "text": "Thie website contains all the content regarding TLP 2022-23\nMathematics I\nIntroduction to Programming\nIntroduction to Artificial Intelligence\nData Visualization\nMathematics II"
+    "text": "The website contains all the content regarding TLP 2022-23\nMathematics I\nIntro to Programming\nIntroduction to A.I.\nData Visualization\nMathematics II\nIntro to DSA\nMachine Learning I"
   },
   {
     "objectID": "06_Intro_DSA/LE2.html",
@@ -233,7 +233,7 @@
   {
     "objectID": "03_Intro_AI/index.html",
     "href": "03_Intro_AI/index.html",
-    "title": "Introduction to Artificial Intelligence",
+    "title": "Intro to A.I.",
     "section": "",
     "text": "AI Today compared to Dartmouth Workshop\nA* Algorithm\nBackward and Forward Chainning\nPOS Tagging using Hidden Markov Model\nLearnig Gates using Single and Multi Layer Perceptron"
   },
@@ -429,7 +429,7 @@
   {
     "objectID": "02_Python_Programming/index.html",
     "href": "02_Python_Programming/index.html",
-    "title": "Introduction to Prgramming",
+    "title": "Intro to Programming",
     "section": "",
     "text": "Assignemnt 1-3\nAssignemnt 4\nMedian"
   },
