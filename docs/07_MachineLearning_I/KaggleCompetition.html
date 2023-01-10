@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Plaksha – kagglecompetition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Plaksha</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/index.html" class="sidebar-item-text sidebar-link">Mathematics I</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Python_Programming/index.html" class="sidebar-item-text sidebar-link">Introduction to Prgramming</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03_Intro_AI/index.html" class="sidebar-item-text sidebar-link">Introduction to Artificial Intelligence</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04_DataVisualization/index.html" class="sidebar-item-text sidebar-link">Data Visualization</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05_Mathematics_II/index.html" class="sidebar-item-text sidebar-link">Mathematics II</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">Imports</a></li>
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a></li>
+  <li><a href="#data-split" id="toc-data-split" class="nav-link" data-scroll-target="#data-split">Data Split</a></li>
+  <li><a href="#abstraction-helper-functions" id="toc-abstraction-helper-functions" class="nav-link" data-scroll-target="#abstraction-helper-functions">Abstraction (Helper Functions)</a></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a>
+  <ul class="collapse">
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic Regression</a></li>
+  <li><a href="#support-vector-classifier" id="toc-support-vector-classifier" class="nav-link" data-scroll-target="#support-vector-classifier">Support Vector Classifier</a></li>
+  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree">Decision Tree</a></li>
+  <li><a href="#random-forest" id="toc-random-forest" class="nav-link" data-scroll-target="#random-forest">Random Forest</a></li>
+  <li><a href="#extreme-gradient-boosting" id="toc-extreme-gradient-boosting" class="nav-link" data-scroll-target="#extreme-gradient-boosting">eXtreme Gradient Boosting</a></li>
+  <li><a href="#creating-files" id="toc-creating-files" class="nav-link" data-scroll-target="#creating-files">Creating Files</a></li>
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="objective" class="level3">
+<h3 class="anchored" data-anchor-id="objective">Objective</h3>
+<p>Collisions at high-energy particle colliders are a traditionally fruitful source of exotic particle discoveries. Finding these rare particles requires solving difficult signal-versus-background classification. The objective of this notebook is one were we try to apply various Machine Learning akgortihms on the Monto-Carlo simualted data, to try to classify the data as either <code>signal</code> or <code>background</code></p>
+<p>The Data is named <code>SUSY</code> data, which is available at the UCI Machine Learning repository <a href="https://archive.ics.uci.edu/ml/datasets/SUSY">Link</a>.</p>
+</section>
+<section id="imports" class="level3">
+<h3 class="anchored" data-anchor-id="imports">Imports</h3>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Redaing and Manipulating Data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Classification Models from sklearn</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Classification Model from XGBoost</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBClassifier</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Hyper Parameter Optimization</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> optuna</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>U <span class="op">-</span>qq <span class="op">--</span>no<span class="op">-</span>cache<span class="op">-</span><span class="bu">dir</span> gdown <span class="op">--</span>pre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>qq optuna</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gdown</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://drive.google.com/uc?id=1_FZIrNug8svcEK5QMDdV2MoHmcCny8kJ&amp;export=download"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> <span class="st">"train.csv"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>gdown.download(url, output)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://drive.google.com/uc?id=1_FAidr3sAiSWx6mPS26HMpWjVaiSTOXq&amp;export=download"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> <span class="st">"test.csv"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>gdown.download(url, output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"./train.csv"</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-exploration" class="level3">
+<h3 class="anchored" data-anchor-id="data-exploration">Data Exploration</h3>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>lepton_1_pT</th>
+      <th>lepton_1_eta</th>
+      <th>lepton_1_phi</th>
+      <th>lepton_2_pT</th>
+      <th>lepton_2_eta</th>
+      <th>lepton_2_phi</th>
+      <th>missing_energy_magnitude</th>
+      <th>missing_energy_phi</th>
+      <th>MET_rel</th>
+      <th>axial_MET</th>
+      <th>M_R</th>
+      <th>M_TR_2</th>
+      <th>R</th>
+      <th>MT2</th>
+      <th>S_R</th>
+      <th>M_Delta_R</th>
+      <th>dPhi_r_b</th>
+      <th>cos(theta_r1)</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+      <td>3.500000e+06</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.000232e+00</td>
+      <td>3.599349e-04</td>
+      <td>3.409634e-04</td>
+      <td>9.992382e-01</td>
+      <td>3.546249e-04</td>
+      <td>-2.609503e-04</td>
+      <td>9.994536e-01</td>
+      <td>-4.940216e-04</td>
+      <td>1.000944e+00</td>
+      <td>-8.176786e-05</td>
+      <td>1.000253e+00</td>
+      <td>9.996171e-01</td>
+      <td>9.998163e-01</td>
+      <td>1.000160e+00</td>
+      <td>9.999674e-01</td>
+      <td>9.997972e-01</td>
+      <td>9.992375e-01</td>
+      <td>2.248649e-01</td>
+      <td>4.572371e-01</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>6.873955e-01</td>
+      <td>1.003109e+00</td>
+      <td>1.001971e+00</td>
+      <td>6.537354e-01</td>
+      <td>1.002817e+00</td>
+      <td>1.001447e+00</td>
+      <td>8.724024e-01</td>
+      <td>1.001655e+00</td>
+      <td>8.897569e-01</td>
+      <td>1.000707e+00</td>
+      <td>6.286597e-01</td>
+      <td>5.839003e-01</td>
+      <td>4.711496e-01</td>
+      <td>8.590315e-01</td>
+      <td>6.205179e-01</td>
+      <td>6.235858e-01</td>
+      <td>4.361374e-01</td>
+      <td>1.970049e-01</td>
+      <td>4.981681e-01</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>2.548815e-01</td>
+      <td>-2.102919e+00</td>
+      <td>-1.734789e+00</td>
+      <td>4.285860e-01</td>
+      <td>-2.059306e+00</td>
+      <td>-1.734202e+00</td>
+      <td>7.199480e-04</td>
+      <td>-1.727112e+00</td>
+      <td>7.693475e-08</td>
+      <td>-1.533509e+01</td>
+      <td>2.680643e-01</td>
+      <td>2.427395e-03</td>
+      <td>4.528082e-03</td>
+      <td>0.000000e+00</td>
+      <td>2.734135e-02</td>
+      <td>4.452858e-03</td>
+      <td>3.211849e-07</td>
+      <td>1.498080e-07</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.625003e-01</td>
+      <td>-7.569637e-01</td>
+      <td>-8.673235e-01</td>
+      <td>5.969753e-01</td>
+      <td>-7.693463e-01</td>
+      <td>-8.680870e-01</td>
+      <td>4.781798e-01</td>
+      <td>-8.663442e-01</td>
+      <td>3.689606e-01</td>
+      <td>-4.920890e-01</td>
+      <td>5.883102e-01</td>
+      <td>6.222096e-01</td>
+      <td>6.503162e-01</td>
+      <td>1.708098e-01</td>
+      <td>5.984608e-01</td>
+      <td>5.134528e-01</td>
+      <td>6.874365e-01</td>
+      <td>6.910075e-02</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>7.913588e-01</td>
+      <td>6.139759e-04</td>
+      <td>-3.000550e-04</td>
+      <td>7.997329e-01</td>
+      <td>1.132228e-04</td>
+      <td>-3.504302e-04</td>
+      <td>7.734768e-01</td>
+      <td>-1.038813e-02</td>
+      <td>8.017117e-01</td>
+      <td>-8.002724e-02</td>
+      <td>8.284981e-01</td>
+      <td>8.778247e-01</td>
+      <td>9.341271e-01</td>
+      <td>9.014440e-01</td>
+      <td>8.353698e-01</td>
+      <td>9.137308e-01</td>
+      <td>1.094097e+00</td>
+      <td>1.671680e-01</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.204264e+00</td>
+      <td>7.581109e-01</td>
+      <td>8.681473e-01</td>
+      <td>1.161961e+00</td>
+      <td>7.698279e-01</td>
+      <td>8.670100e-01</td>
+      <td>1.206897e+00</td>
+      <td>8.681880e-01</td>
+      <td>1.374708e+00</td>
+      <td>3.489328e-01</td>
+      <td>1.210956e+00</td>
+      <td>1.219851e+00</td>
+      <td>1.283126e+00</td>
+      <td>1.612343e+00</td>
+      <td>1.207777e+00</td>
+      <td>1.383827e+00</td>
+      <td>1.369023e+00</td>
+      <td>3.301480e-01</td>
+      <td>1.000000e+00</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2.055345e+01</td>
+      <td>2.101605e+00</td>
+      <td>1.734839e+00</td>
+      <td>3.303562e+01</td>
+      <td>2.059721e+00</td>
+      <td>1.734686e+00</td>
+      <td>2.106888e+01</td>
+      <td>1.740689e+00</td>
+      <td>2.338644e+01</td>
+      <td>1.959220e+01</td>
+      <td>2.107572e+01</td>
+      <td>1.616682e+01</td>
+      <td>6.731210e+00</td>
+      <td>2.068624e+01</td>
+      <td>2.115226e+01</td>
+      <td>1.561370e+01</td>
+      <td>1.591660e+00</td>
+      <td>1.000000e+00</td>
+      <td>1.000000e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df.hist(figsize=(25,25))</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.show()</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># StackOver Flow</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>n_rows <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>n_cols <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span>n_rows, ncols<span class="op">=</span>n_cols, figsize<span class="op">=</span>(<span class="dv">25</span>,<span class="dv">25</span>))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, column <span class="kw">in</span> <span class="bu">enumerate</span>(df.columns):</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    sns.histplot(df[column], ax<span class="op">=</span>axes[i<span class="op">//</span>n_cols,i<span class="op">%</span>n_cols])</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="KaggleCompetition_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see that all the columns in the data are numericalm and have weither of four distribution. * Guassian Distribution * Left/Right Skewed Guassian Distribution * Power Law Distribution * Uniform Distribution</p>
+<p>We could try to apply <code>log_transform</code> on the skewed distribution to make them normal.</p>
+<p>There are no outliers, various box plot are plotted for columns which are normally distributed and there were no outliers.</p>
+<p>For the skewed distribution, there are very long tails, but when removed those outliers they were effecting the generalization of any algorithm. So those values were maintained and are not treated as outliers</p>
+<p>Note:</p>
+<p>Various data trasnformations were applied to change the data, and new columns were derived using the first 8 features. In the paper <code>Baldi, P., P. Sadowski, and D. Whiteson. “Searching for Exotic Particles in High-energy Physics with Deep Learning.” Nature Communications 5 (July 2, 2014)</code>, they mentioned that three particles are emitted when a collission occurs, and the <code>lepton_1</code> and <code>lepton_2</code> are the first two particles, and the goal is to find the the third rare particle. For this we can derive new features based on domain knowledge like <span class="math inline">\(e^((lepton_1)^2 + (lepton_2)^2)\)</span>.</p>
+</section>
+<section id="data-split" class="level3">
+<h3 class="anchored" data-anchor-id="data-split">Data Split</h3>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> df[<span class="st">'class'</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_train <span class="op">=</span> df.drop(<span class="st">'class'</span>,axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>YFinal <span class="op">=</span> df_test[<span class="st">'class'</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>XFinal <span class="op">=</span> df_test.drop(<span class="st">'class'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Xtrain,Xtest,Ytrain,Ytest<span class="op">=</span>train_test_split(df_train, Y, test_size<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">42</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training Data: Shape of Features: </span><span class="sc">{</span>Xtrain<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, Shape of Labels: </span><span class="sc">{</span>Xtrain<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Testing Data: Shape of Features: </span><span class="sc">{</span>Xtest<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, Shape of Labels: </span><span class="sc">{</span>Ytest<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training Data: Shape of Features: (2800000, 18), Shape of Labels: (2800000, 18)
+Testing Data: Shape of Features: (700000, 18), Shape of Labels: (700000,)</code></pre>
+</div>
+</div>
+</section>
+<section id="abstraction-helper-functions" class="level3">
+<h3 class="anchored" data-anchor-id="abstraction-helper-functions">Abstraction (Helper Functions)</h3>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ACCURACIES <span class="op">=</span> <span class="bu">dict</span>()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_model(model, train_X<span class="op">=</span>Xtrain, train_Y<span class="op">=</span>Ytrain, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                test_X<span class="op">=</span>Xtest, test_Y<span class="op">=</span>Ytest, <span class="op">**</span>kwargs):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Train a Model for the given `model` classifier.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">    The Train Data X and Y are used for training,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">    The testing Data X and Y are used for testing after</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">    the fitting of the model.</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">    The kwargs, are for keyword parameters for each model.</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Prints the Training and Validation(testing) Accuracy</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns the trained classifier</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> ACCURACIES</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    classifier <span class="op">=</span> model(<span class="op">**</span>kwargs, random_state <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    classifier.fit(df_train,Y)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Training Acc: "</span>,classifier.score(train_X, train_Y))</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> classifier.score(test_X, test_Y)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Val Acc: "</span>, score)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    model_name <span class="op">=</span> <span class="bu">type</span>(classifier).<span class="va">__name__</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Getting the Zeroth Index of the Tuple from the Value</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ACCURACIES.get(model_name, (<span class="dv">0</span>,{}))[<span class="dv">0</span>] <span class="op">&gt;</span> score:</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        ACCURACIES[model_name] <span class="op">=</span> score, kwargs</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> classifier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parameter_tuning(model, parameters, trials<span class="op">=</span><span class="dv">100</span>):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Using Optuna to Tune Hyper parameters.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">    The function takes parameters which is a dictinary,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">    with all possible arguments to the models and the range or list</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">    of parameters to be tried for each argument.</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># https://optuna.readthedocs.io/en/v2.0.0/tutorial/pruning.html</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># https://optuna.readthedocs.io/en/stable/faq.html#objective-func-additional-args</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> objective(trial):</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">        The objective function is to create a function which tries one value of each</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">        parameter from the dictionary given based on the best possible approach.</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">        This function also includes pruning algorithms, to stop going ahead with the curernt</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">        hyper parameters value if the model is not giving better results. Which tries to</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">        cut down the search time.</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">nonlocal</span> parameters, model</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        suggest <span class="op">=</span> {<span class="st">'cat'</span>: trial.suggest_categorical, <span class="st">'int'</span>: trial.suggest_int,</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">'float'</span>: trial.suggest_float, <span class="st">'uni'</span>: trial.suggest_uniform}</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        params <span class="op">=</span> {}</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> k,v <span class="kw">in</span> parameters.items():</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>            params[k] <span class="op">=</span> suggest[v[<span class="dv">0</span>]](k,<span class="op">**</span>v[<span class="dv">1</span>])</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        clf <span class="op">=</span> model(<span class="op">**</span>params)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        clf.fit(Xtrain, Ytrain)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> trial.should_prune():</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> optuna.TrialPruned()</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> clf.score(Xtest, Ytest)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    study <span class="op">=</span> optuna.create_study(</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>        direction<span class="op">=</span><span class="st">"maximize"</span>, pruner<span class="op">=</span>optuna.pruners.SuccessiveHalvingPruner()</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    study.optimize(objective, n_trials<span class="op">=</span>trials, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Best trial:"</span>)</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>    trial <span class="op">=</span> study.best_trial</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"  Value: "</span>, trial.value)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"  Params: "</span>)</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> trial.params.items():</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"    </span><span class="sc">{}</span><span class="st">: </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(key, value))</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> trial.params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="models" class="level2">
+<h2 class="anchored" data-anchor-id="models">Models</h2>
+<section id="logistic-regression" class="level3">
+<h3 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h3>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters = dict(max_iter = 1000, n_jobs=-1)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model = train_model(LogisticRegression, **parameters)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Training Acc: <strong>0.7884857142857142</strong><br>
+Val Acc: <strong>0.7877085714285714</strong></p>
+<p>We now have a baseline of <strong>78.77%</strong> validation accuracy.</p>
+<p>Logistic Regression is a linear model, which tries to fit the model of seperating the class by a hyper-plane. If the data points is not linearly seprable we have the error, which is evident with error of <em>0.2123</em></p>
+</section>
+<section id="support-vector-classifier" class="level3">
+<h3 class="anchored" data-anchor-id="support-vector-classifier">Support Vector Classifier</h3>
+<p>SVMs scale very poorly with data, here we are having 3.5M data points and even after split we have 2.8M data points. In SVM during solving the dual problem the optimizer evaluates 2.8M langrange variables, out of which many will be zero’s and the non-zero are the support vectors. But this will take a lot of time and cross the 1 hour constraint.</p>
+</section>
+<section id="decision-tree" class="level3">
+<h3 class="anchored" data-anchor-id="decision-tree">Decision Tree</h3>
+<p>It was than decided to use a vanilla decision tree, so as to create a simple rule based system derived from the data. This was done primarily to understand the feature dependency on the output. Since the single decision tree is very good to model interpretability.</p>
+<p>A more complex problem will reduce interpretability and explainability of the data, and Decision Tree is a good approach to start with to get the data features influence. This may not be the best solution, but a good start to understand.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters = dict(criterion='entropy', max_depth=8)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model = train_model(DecisionTreeClassifier, **parameters)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Training Acc: <strong>0.7852380952380953</strong><br>
+Val Acc: <strong>0.7816939209726443</strong></p>
+<section id="hyper-parameter-tuning-using-optuna" class="level5">
+<h5 class="anchored" data-anchor-id="hyper-parameter-tuning-using-optuna">Hyper Parameter Tuning (using Optuna)</h5>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    criterion <span class="op">=</span> (<span class="st">'cat'</span>, {<span class="st">'choices'</span>:[<span class="st">'gini'</span>, <span class="st">'entropy'</span>]}),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    max_depth <span class="op">=</span> (<span class="st">'int'</span>, <span class="bu">dict</span>(low<span class="op">=</span><span class="dv">2</span>, high<span class="op">=</span><span class="dv">32</span>,log<span class="op">=</span><span class="va">True</span>)),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    splitter <span class="op">=</span> (<span class="st">'cat'</span>, {<span class="st">'choices'</span>:[<span class="st">"best"</span>, <span class="st">"random"</span>]}),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    max_features <span class="op">=</span> (<span class="st">'cat'</span>, {<span class="st">'choices'</span>:[<span class="va">None</span>, <span class="st">"sqrt"</span>, <span class="st">"log2"</span>]}),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    ccp_alpha <span class="op">=</span> (<span class="st">'float'</span>, <span class="bu">dict</span>(low<span class="op">=</span><span class="dv">0</span>, high<span class="op">=</span><span class="fl">0.02</span>, step<span class="op">=</span><span class="fl">0.005</span>)),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># best_params = parameter_tuning(DecisionTreeClassifier, parameters, trials = 100)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A new study created in memory with name: no-name-ccce6503-93f1-4e69-bcfb-93504aff439</p>
+<p>Trial 0 finished with value: 0.7501951367781156 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 6, ‘splitter’: ‘best’, ‘max_features’: ‘sqrt’, ‘ccp_alpha’: 0.01}</em>. Best is trial 0 with value: <code>0.7501951367781156</code><br>
+Trial 1 finished with value: 0.6498364741641337 and parameters: <em>{‘criterion’: ‘entropy’, ‘max_depth’: 2, ‘splitter’: ‘random’, ‘max_features’: ‘log2’, ‘ccp_alpha’: 0.01}</em>. Best is trial 0 with value: <code>0.7501951367781156</code><br>
+Trial 7 finished with value: 0.6267954407294832 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 19, ‘splitter’: ‘random’, ‘max_features’: ‘sqrt’, ‘ccp_alpha’: 0.005}</em>. Best is trial 0 with value: <code>0.7501951367781156</code><br>
+Trial 8 finished with value: 0.7566920972644376 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 18, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 8 with value: <code>0.7566920972644376</code><br>
+Trial 11 finished with value: 0.7481306990881459 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 14, ‘splitter’: ‘best’, ‘max_features’: ‘sqrt’, ‘ccp_alpha’: 0.02}</em>. Best is trial 8 with value: <code>0.7566920972644376</code><br>
+Trial 12 finished with value: 0.7584814589665654 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 5, ‘splitter’: ‘best’, ‘max_features’: ‘sqrt’, ‘ccp_alpha’: 0.0}</em>. Best is trial 12 with value: <code>0.7584814589665654</code><br>
+Trial 13 finished with value: 0.7581580547112462 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 4, ‘splitter’: ‘best’, ‘max_features’: ‘sqrt’, ‘ccp_alpha’: 0.0}</em>. Best is trial 12 with value: <code>0.7584814589665654</code><br>
+Trial 22 finished with value: 0.7831367781155015 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 11, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 22 with value: <code>0.7831367781155015</code><br>
+Trial 23 finished with value: 0.7501951367781156 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 11, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.005}</em>. Best is trial 22 with value: <code>0.7831367781155015</code><br>
+Trial 42 finished with value: 0.7814951367781156 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 7, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 22 with value: <code>0.7831367781155015</code><br>
+Trial 43 finished with value: 0.7850443768996961 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 10, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 43 with value: <code>0.7850443768996961</code><br>
+Trial 44 finished with value: 0.7794395136778115 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 12, ‘splitter’: ‘best’, ‘max_features’: ‘log2’, ‘ccp_alpha’: 0.0}</em>. Best is trial 43 with value: <code>0.7850443768996961</code><br>
+Trial 49 finished with value: 0.7845990881458966 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 9, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 43 with value: <code>0.7850443768996961</code><br>
+Trial 50 finished with value: 0.7850945288753799 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 10, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 50 with value: <code>0.7850945288753799</code><br>
+Trial 51 finished with value: 0.7850145896656535 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 10, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 50 with value: <code>0.7850945288753799</code><br>
+Trial 52 finished with value: 0.7850823708206687 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 10, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 50 with value: <code>0.7850945288753799</code><br>
+Trial 68 finished with value: 0.7501951367781156 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 12, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.005}</em>. Best is trial 50 with value: <code>0.7850945288753799</code><br>
+Trial 69 finished with value: 0.7792410334346505 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 9, ‘splitter’: ‘best’, ‘max_features’: ‘sqrt’, ‘ccp_alpha’: 0.0}</em>. Best is trial 50 with value: <code>0.7850945288753799</code><br>
+Trial 70 finished with value: 0.7805501519756839 and parameters: <em>{‘criterion’: ‘entropy’, ‘max_depth’: 14, ‘splitter’: ‘random’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 50 with value: <code>0.7850945288753799</code><br>
+Trial 71 finished with value: 0.7851279635258359 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 10, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 71 with value: <code>0.7851279635258359</code><br>
+Trial 72 finished with value: 0.7850103343465046 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 10, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 71 with value: <code>0.7851279635258359</code><br>
+Trial 73 finished with value: 0.7831857142857143 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 11, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 71 with value: <code>0.7851279635258359</code><br>
+Trial 98 finished with value: 0.7845826747720365 and parameters: <em>{‘criterion’: ‘gini’, ‘max_depth’: 9, ‘splitter’: ‘best’, ‘max_features’: None, ‘ccp_alpha’: 0.0}</em>. Best is trial 71 with value: <code>0.7851279635258359</code><br>
+Trial 99 finished with value: 0.730756838905775 and parameters: <em>{‘criterion’: ‘entropy’, ‘max_depth’: 13, ‘splitter’: ‘random’, ‘max_features’: ‘sqrt’, ‘ccp_alpha’: 0.0}</em>. Best is trial 71 with value: <code>0.7851279635258359</code></p>
+<pre><code>Best trial:
+  Value:  0.7851279635258359  
+  Params:    
+    * criterion: gini  
+    * max_depth: 10  
+    * splitter: best  
+    * max_features: None  
+    * ccp_alpha: 0.0  </code></pre>
+</section>
+<section id="after-hyper-parameter-tuning-training-with-new-hyperparameters-and-evaluating" class="level5">
+<h5 class="anchored" data-anchor-id="after-hyper-parameter-tuning-training-with-new-hyperparameters-and-evaluating">After Hyper Parameter Tuning, Training with New Hyperparameters and Evaluating</h5>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model = DecisionTreeClassifier(**best_params)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model.fit(Xtrain, Ytrain)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Test Acc: ",model.score(Xtest, YFtest))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Test Acc: <strong>0.7853406666666667</strong></p>
+</section>
+</section>
+<section id="random-forest" class="level3">
+<h3 class="anchored" data-anchor-id="random-forest">Random Forest</h3>
+<p>Now once we had a Decision Tree, now we can ensemble multiple trees to form a Random Forest. We do this using bagging technique, where the data points are sampled differently for different trees. At the end we get a collection(forest) of trees.</p>
+<p>This is done so that we can reduce the variance of the single decisoin tree. This is done using Bagging</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters = dict(n_estimators=100, criterion='gini', max_depth = 10, n_jobs=-1)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model = train_model(RandomForestClassifier, **parameters)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Training Acc: <strong>0.8043047619047619</strong><br>
+Val Acc: <strong>0.7947720364741642</strong></p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    n_estimators <span class="op">=</span> (<span class="st">'int'</span>, <span class="bu">dict</span>(low<span class="op">=</span><span class="dv">16</span>, high<span class="op">=</span><span class="dv">512</span>, log<span class="op">=</span><span class="va">True</span>)),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    max_features <span class="op">=</span> (<span class="st">'float'</span>, <span class="bu">dict</span>(low<span class="op">=</span><span class="fl">0.15</span>, high<span class="op">=</span><span class="fl">1.0</span>)),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    min_samples_split <span class="op">=</span> (<span class="st">'int'</span>, <span class="bu">dict</span>(low<span class="op">=</span><span class="dv">2</span>, high<span class="op">=</span><span class="dv">14</span>)),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    min_samples_leaf <span class="op">=</span> (<span class="st">'int'</span>, <span class="bu">dict</span>(low<span class="op">=</span><span class="dv">1</span>, high<span class="op">=</span><span class="dv">14</span>)),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    max_samples <span class="op">=</span> (<span class="st">'float'</span>, <span class="bu">dict</span>(low<span class="op">=</span><span class="fl">0.6</span>, high<span class="op">=</span><span class="fl">0.99</span>)),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># best_params = parameter_tuning(RandomForestClassifier, parameters, trials = 30)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A new study created in memory with name: no-name-23d7a54f-1a5b-473e-b1b7-05eaae63c4c</p>
+<p>Trial 7 finished with value: 0.7980237082066869 and parameters: {‘n_estimators’: 47, ‘max_features’: 0.4596051497513195, ‘min_samples_split’: 14, ‘min_samples_leaf’: 2, ‘max_samples’: 0.6523800590566861}. Best is trial 7 with value: <code>0.7980237082066869</code></p>
+<p>Trial 3 finished with value: 0.7982547112462006 and parameters: {‘n_estimators’: 87, ‘max_features’: 0.2981610544019258, ‘min_samples_split’: 3, ‘min_samples_leaf’: 3, ‘max_samples’: 0.986226411599963}. Best is trial 3 with value: <code>0.7982547112462006</code></p>
+<p>Trial 9 finished with value: 0.7961930091185411 and parameters: {‘n_estimators’: 23, ‘max_features’: 0.5739882381756989, ‘min_samples_split’: 8, ‘min_samples_leaf’: 6, ‘max_samples’: 0.6803133252458505}. Best is trial 3 with value: <code>0.7982547112462006</code></p>
+<p>Trial 4 finished with value: 0.7982899696048632 and parameters: {‘n_estimators’: 70, ‘max_features’: 0.9466019600183457, ‘min_samples_split’: 14, ‘min_samples_leaf’: 6, ‘max_samples’: 0.8431696250534466}. Best is trial 4 with value: <code>0.7982899696048632</code></p>
+<p>Trial 2 finished with value: 0.7992127659574468 and parameters: {‘n_estimators’: 128, ‘max_features’: 0.6205302240776256, ‘min_samples_split’: 10, ‘min_samples_leaf’: 3, ‘max_samples’: 0.7576130035460769}. Best is trial 2 with value: <code>0.7992127659574468</code></p>
+<p>Trial 6 finished with value: 0.7999793313069908 and parameters: {‘n_estimators’: 189, ‘max_features’: 0.48541270809179304, ‘min_samples_split’: 14, ‘min_samples_leaf’: 8, ‘max_samples’: 0.6770325683419379}. Best is trial 6 with value: <code>0.7999793313069908</code></p>
+<p>Trial 12 finished with value: 0.797529179331307 and parameters: {‘n_estimators’: 39, ‘max_features’: 0.36246416423360384, ‘min_samples_split’: 13, ‘min_samples_leaf’: 3, ‘max_samples’: 0.8976190443329654}. Best is trial 6 with value: <code>0.7999793313069908</code></p>
+<p>Trial 13 finished with value: 0.7924936170212766 and parameters: {‘n_estimators’: 20, ‘max_features’: 0.9820341311824934, ‘min_samples_split’: 5, ‘min_samples_leaf’: 3, ‘max_samples’: 0.7134874049550151}. Best is trial 6 with value: <code>0.7999793313069908</code></p>
+<p>Trial 8 finished with value: 0.7999866261398176 and parameters: {‘n_estimators’: 171, ‘max_features’: 0.5787223768791657, ‘min_samples_split’: 9, ‘min_samples_leaf’: 12, ‘max_samples’: 0.6698039063759819}. Best is trial 8 with value: <code>0.7999866261398176</code></p>
+<p>Trial 21 finished with value: 0.798937386018237 and parameters: {‘n_estimators’: 478, ‘max_features’: 0.15782017114552138, ‘min_samples_split’: 11, ‘min_samples_leaf’: 12, ‘max_samples’: 0.6056404685945235}. Best is trial 8 with value: <code>0.7999866261398176</code></p>
+<p>Trial 10 finished with value: 0.8000282674772037 and parameters: {‘n_estimators’: 333, ‘max_features’: 0.7400302635544946, ‘min_samples_split’: 13, ‘min_samples_leaf’: 5, ‘max_samples’: 0.6199951088017647}. Best is trial 10 with value: <code>0.8000282674772037</code></p>
+<p>Trial 17 finished with value: 0.8002747720364741 and parameters: {‘n_estimators’: 399, ‘max_features’: 0.7500853374325903, ‘min_samples_split’: 10, ‘min_samples_leaf’: 13, ‘max_samples’: 0.61439371842897}. Best is trial 17 with value: <code>0.8002747720364741</code></p>
+<p>Trial 18 finished with value: 0.8002969604863222 and parameters: {‘n_estimators’: 494, ‘max_features’: 0.7042917092544888, ‘min_samples_split’: 11, ‘min_samples_leaf’: 12, ‘max_samples’: 0.6043806165694288}. Best is trial 18 with value: <code>0.8002969604863222</code></p>
+<p>Trial 19 finished with value: 0.8003197568389058 and parameters: {‘n_estimators’: 422, ‘max_features’: 0.7272347622230614, ‘min_samples_split’: 11, ‘min_samples_leaf’: 12, ‘max_samples’: 0.6258827581609802}. Best is trial 19 with value: <code>0.8003197568389058</code></p>
+<p>Trial 28 finished with value: 0.8002668693009118 and parameters: {‘n_estimators’: 401, ‘max_features’: 0.8224379443199038, ‘min_samples_split’: 12, ‘min_samples_leaf’: 14, ‘max_samples’: 0.630348068431515}. Best is trial 19 with value: <code>0.8003197568389058</code></p>
+<p>Trial 29 finished with value: 0.8001954407294832 and parameters: {‘n_estimators’: 380, ‘max_features’: 0.8484879439317321, ‘min_samples_split’: 11, ‘min_samples_leaf’: 10, ‘max_samples’: 0.6356978721622217}. Best is trial 19 with value: <code>0.8003197568389058</code></p>
+<pre><code>Best trial:
+  Value:  0.8003197568389058
+  Params: 
+    n_estimators: 422
+    max_features: 0.7272347622230614
+    min_samples_split: 11
+    min_samples_leaf: 12
+    max_samples: 0.6258827581609802</code></pre>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model = RandomForestClassifier(**best_params)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model.fit(Xtrain, Ytrain)</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Test Acc: ",model.score(XFinal, YFinal))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Test Acc: <strong>0.8007433333333334</strong></p>
+</section>
+<section id="extreme-gradient-boosting" class="level3">
+<h3 class="anchored" data-anchor-id="extreme-gradient-boosting">eXtreme Gradient Boosting</h3>
+<p>At the end, after Random Forest, to have a more robust model which accounts for mis-classification of the points, Boosting was preferred. In boosting, we increaase the probability of the data point being selected if the data point was mis-classified in the previous iteration. We go on perform the iteration repeatedly until we have a robust model.</p>
+<p>There were various option of <code>AdaBoost</code>, <code>GradientBoost</code>, <code>HistGradientBoost</code>, <code>LightGBM</code> and <code>eXtremeGradientBoost</code>. <code>AdaBoost</code> is limited to only stumps, which is depth of 1 tree with only 2 leafes to a node.</p>
+<p>All other boosting techniques are realted to <code>Gradient</code>, and the <code>eXtremeGradientBoostin</code> method, uses an Additive Tree learning method ,where we know it is intractable to enumerate all possible tree structures, so we keep on adding one split at a time.</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters = dict(n_jobs = -1)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model = train_model(XGBClassifier, **parameters)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Training Acc: <strong>0.8047453571428571</strong><br>
+Val Acc: <strong>0.8017314285714285</strong></p>
+<p>Optuna was used to do hyper parameter testing, but a GPU was used since XGBoost has GPU compatibility. TheGPU helped in running the various combinartions of parameters quickly. The metric for tuning was Area Under Curve rather than error or accuracy. This was done to increase the model robustness. But once we got the hyper parameters the metric was than kept back as <code>error</code> since that is the end objective.</p>
+<p>The objective parameter is binary-logistic, since it is a bianry problem which is classification. All the other hyper parameters were given a wide range of search space and the best was selected from that space.</p>
+<section id="hyper-parameter-tuning" class="level5">
+<h5 class="anchored" data-anchor-id="hyper-parameter-tuning">Hyper Parameter Tuning</h5>
+<pre><code> param = {
+        "verbosity": 0,
+        "objective": "binary:logistic",
+        "eval_metric": "auc",
+        "booster": trial.suggest_categorical("booster", ["gbtree"]),
+        "lambda": trial.suggest_float("lambda", 1e-8, 1.0, log=True),
+        "alpha": trial.suggest_float("alpha", 1e-8, 1.0, log=True),
+        # sampling ratio for training data.
+        "subsample": trial.suggest_float("subsample", 0.2, 1.0),
+        # sampling according to each tree.
+        "colsample_bytree": trial.suggest_float("colsample_bytree", 0.2, 1.0),
+        "colsample_bylevel": trial.suggest_float("colsample_bylevel", 0.2, 1.0),
+    }
+
+    param["max_depth"] = trial.suggest_int("max_depth", 1, 15)
+    param["min_child_weight"] = trial.suggest_int("min_child_weight", 1, 10)
+    param["max_delta_step"] = trial.suggest_int("max_delta_step", 0, 20)
+    param["eta"] = trial.suggest_float("eta", 1e-8, 1.0, log=True)
+    param["gamma"] = trial.suggest_float("gamma", 1e-9, 0.5, log=True)
+    param["grow_policy"] = trial.suggest_categorical("grow_policy", ["depthwise", "lossguide"])
+    param["scale_pos_weight"] = trial.suggest_categorical("scale_pos_weight", [1.17])
+
+    pruning_callback = optuna.integration.XGBoostPruningCallback(trial, "test-error")
+    history = xgb.cv(param, dtrain, num_boost_round=100, nfold=2, callbacks=[pruning_callback],)
+    mean_error = history["test-error-mean"].values[-1]</code></pre>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a> <span class="st">'objective'</span>: <span class="st">'binary:logistic'</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> <span class="st">'eval_metric'</span>: <span class="st">'error'</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a> <span class="st">'booster'</span>: <span class="st">'gbtree'</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a> <span class="st">'lambda'</span>: <span class="fl">0.5</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a> <span class="st">'alpha'</span>: <span class="fl">0.5</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a> <span class="st">'gamma'</span>: <span class="fl">0.05</span>, <span class="co">#min_split_loss</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a> <span class="st">'tree_method'</span>: <span class="st">"hist"</span>,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a> <span class="st">'learning_rate'</span>: <span class="fl">0.0271</span>,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a> <span class="st">'max_depth'</span>: <span class="dv">10</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a> <span class="st">'min_child_weight'</span>: <span class="dv">13</span>,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a> <span class="st">'max_delta_step'</span>: <span class="dv">17</span>,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a> <span class="st">'n_estimators'</span>: <span class="dv">500</span>,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a> <span class="st">'grow_policy'</span>: <span class="st">'depthwise'</span>,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a> <span class="st">'num_parallel_tree'</span>: <span class="dv">4</span>,</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a> <span class="st">'subsample'</span>: <span class="fl">0.8</span>,</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a> <span class="st">'colsample_bylevel'</span>: <span class="fl">0.9</span>,</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a> <span class="st">'colsample_bytree'</span>: <span class="fl">0.45</span>,</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co">#  'scale_pos_weight': 1.17,</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a> <span class="st">'n_jobs'</span> : <span class="op">-</span><span class="dv">1</span>}</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> train_model(XGBClassifier, <span class="op">**</span>parameters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training Acc:  0.8087035714285714
+Val Acc:  0.8081557142857143</code></pre>
+</div>
+</div>
+<p>Training Acc: <strong>0.8102378571428571</strong><br>
+Val Acc: <strong>Test Acc: 0.8044013333333333</strong></p>
+</section>
+</section>
+<section id="creating-files" class="level3">
+<h3 class="anchored" data-anchor-id="creating-files">Creating Files</h3>
+<section id="generating-csv" class="level4">
+<h4 class="anchored" data-anchor-id="generating-csv">Generating CSV</h4>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_csv(model):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    df_test <span class="op">=</span> pd.read_csv(<span class="st">"./test.csv"</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    prediction <span class="op">=</span> model.predict(df_test)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"./prediction.csv"</span>, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        f.write(<span class="st">"id,class</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> idx, i <span class="kw">in</span> <span class="bu">enumerate</span>(prediction):</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            f.write(<span class="ss">f"</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span><span class="bu">float</span>(i)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>gen_csv(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="future-work" class="level3">
+<h3 class="anchored" data-anchor-id="future-work">Future Work</h3>
+<ul>
+<li><p>The main short coming was domain knowledge, and how to come up with different derived features fromthe existing 8/18 features. The paper entails some mass invariance and momentum, which can be calculated with certain equation from our features.</p></li>
+<li><p>Weights and Biases was tried to keep the tracking of experiments. It would be helpful to conenct Optuna and Weights and Biases, so that the hyper parameter tuning and all the experiments, artifacts related to the experiments are stored.</p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

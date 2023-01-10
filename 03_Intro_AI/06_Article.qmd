@@ -4,9 +4,7 @@ desciption: "Different Types of Kernels in Computer Vision and their Usage"
 author: Abdul Khader, Syed
 format:
     html:
-        code-fold: false
-    pdf: 
-        date: 11 November 2022
+      code-fold: false
 execute: 
   enabled: false
 ---

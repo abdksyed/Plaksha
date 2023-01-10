@@ -1,6 +1,6 @@
 ---
 title: "AI Today Compared to Dartmouth Workshop"
-desciption: "Essay for Lab-1 on Today's AI"
+description: "Essay for Lab-1 on Today's AI"
 author: Abdul Khader, Syed
 format:
     html:
