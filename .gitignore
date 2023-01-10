@@ -131,3 +131,8 @@ dmypy.json
 # DS Store
 .DS_Store
 /.quarto/
+
+/.luarc.json
+
+# Large Files
+*.csv
