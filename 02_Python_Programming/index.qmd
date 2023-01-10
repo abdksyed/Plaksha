@@ -1,5 +1,5 @@
 ---
-title: Introduction to Prgramming
+title: Intro to Programming
 description: Introduction to Python Programming by Prof. Sudharshan Iyer
 ---
 
