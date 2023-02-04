@@ -1,0 +1,4 @@
+---
+title: Project of Data Science and Applications
+description: Project of Data Scie and Applications by Alex Fred Ojala
+---

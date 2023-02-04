@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Abdul Khader, Syed">
+<meta name="description" content="Basics of SQL">
+
+<title>Plaksha - SQL Assignment</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Plaksha</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">SQL Assignment</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Mathematics_I/index.html" class="sidebar-item-text sidebar-link">Mathematics I</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Python_Programming/index.html" class="sidebar-item-text sidebar-link">Intro to Programming</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03_Intro_AI/index.html" class="sidebar-item-text sidebar-link">Intro to A.I.</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04_DataVisualization/index.html" class="sidebar-item-text sidebar-link">Data Visualization</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05_Mathematics_II/index.html" class="sidebar-item-text sidebar-link">Mathematics II</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Intro_DSA/index.html" class="sidebar-item-text sidebar-link">Intro to DSA</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07_MachineLearning_I/index.html" class="sidebar-item-text sidebar-link">Machine Learning I</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09_Projects_DS/index.html" class="sidebar-item-text sidebar-link">Project of Data Science and Applications</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#plaksha-sql-assignment" id="toc-plaksha-sql-assignment" class="nav-link active" data-scroll-target="#plaksha-sql-assignment">Plaksha SQL assignment</a></li>
+  <li><a href="#submission-details" id="toc-submission-details" class="nav-link" data-scroll-target="#submission-details">Submission details:</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises:</a></li>
+  <li><a href="#q1-simple-selects-on-the-students-table" id="toc-q1-simple-selects-on-the-students-table" class="nav-link" data-scroll-target="#q1-simple-selects-on-the-students-table">Q1 Simple SELECTS (on the students table)</a></li>
+  <li><a href="#q2-joins" id="toc-q2-joins" class="nav-link" data-scroll-target="#q2-joins">Q2 Joins</a></li>
+  <li><a href="#q3-aggregate-functions-numerical-logic-and-grouping" id="toc-q3-aggregate-functions-numerical-logic-and-grouping" class="nav-link" data-scroll-target="#q3-aggregate-functions-numerical-logic-and-grouping">Q3 Aggregate functions, numerical logic and grouping</a></li>
+  <li><a href="#your-solution" id="toc-your-solution" class="nav-link" data-scroll-target="#your-solution">Your solution</a>
+  <ul class="collapse">
+  <li><a href="#q1-simple-selects-on-the-students-table-1" id="toc-q1-simple-selects-on-the-students-table-1" class="nav-link" data-scroll-target="#q1-simple-selects-on-the-students-table-1">Q1 Simple SELECTS (on the students table)</a></li>
+  <li><a href="#q2-joins-1" id="toc-q2-joins-1" class="nav-link" data-scroll-target="#q2-joins-1">Q2 Joins</a></li>
+  <li><a href="#q3-aggregate-functions-numerical-logic-and-grouping-1" id="toc-q3-aggregate-functions-numerical-logic-and-grouping-1" class="nav-link" data-scroll-target="#q3-aggregate-functions-numerical-logic-and-grouping-1">Q3 Aggregate functions, numerical logic and grouping</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">SQL Assignment</h1>
+</div>
+
+<div>
+  <div class="description">
+    Basics of SQL
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Abdul Khader, Syed </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><img src="https://raw.githubusercontent.com/afo/data-x-plaksha/master/imgsource/dx_logo.png" align="left"><br><br><br><br></p>
+<section id="plaksha-sql-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="plaksha-sql-assignment">Plaksha SQL assignment</h2>
+<hr>
+</section>
+<section id="submission-details" class="level2">
+<h2 class="anchored" data-anchor-id="submission-details">Submission details:</h2>
+<p>Please submit this as a Jupyter Notebook and a PDF of your results (both should show output). Also push your solutions to Github.</p>
+<p>For the submision create a local database with <code>sqlite3</code> or <code>sqlalchemy</code> in a Jupyter notebook and make the queries either with a cursor object (and then print the results) or by using pandas <code>pd.read_sql_query()</code>.</p>
+<hr>
+<p>When completing this homework you can experiment with SQL commands by utilizing this great online editor:</p>
+<p>https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all</p>
+<p>There are already some tables in the online Database, namely:</p>
+<p><code>Categories, Employees, OrderDetails, Orders, Products, Shippers, and Suppliers.</code></p>
+<p>If you want you can drop them by running <code>DROP TABLE [table-name];</code> (or just keep them).</p>
+<hr>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises:</h2>
+<p>First create a table called students. It has the columns: ‘student_id’, ‘name’, ‘major’, ‘gpa’ and ‘enrollment_date’ We will use a new form of <code>CREATE TABLE</code> expression to produce this table.</p>
+<p>Note that you can improve this and are welcome to do so – e.g.&nbsp;by specifying for example a PRIMARY KEY and a FOREIGN KEY in Q2 :)</p>
+<pre><code>CREATE TABLE students AS
+    SELECT 1 AS student_id, "John" AS name, "Computer Science" AS major, 3.5 AS gpa, "01-01-2022" AS enrollment_date UNION
+    SELECT 2, "Jane", "Physics", 3.8, "01-02-2022" UNION
+    SELECT 3, "Bob", "Engineering", 3.0, "01-03-2022" UNION
+    SELECT 4, "Samantha", "Physics", 3.9, "01-04-2022" UNION
+    SELECT 5, "James", "Engineering", 3.7, "01-05-2022" UNION
+    SELECT 6, "Emily", "Computer Science", 3.6, "01-06-2022" UNION
+    SELECT 7, "Michael", "Computer Science", 3.2, "01-07-2022" UNION
+    SELECT 8, "Jessica", "Engineering", 3.8, "01-08-2022" UNION
+    SELECT 9, "Jacob", "Physics", 3.4, "01-09-2022" UNION
+    SELECT 10, "Ashley", "Physics", 3.9, "01-10-2022";</code></pre>
+</section>
+<section id="q1-simple-selects-on-the-students-table" class="level2">
+<h2 class="anchored" data-anchor-id="q1-simple-selects-on-the-students-table">Q1 Simple SELECTS (on the students table)</h2>
+<ol type="1">
+<li>SELECT all records in the table.</li>
+<li>SELECT students whose major is “Computer Science”.</li>
+<li>SELECT all unique majors (use SELECT DISTINCT) and order them by name, descending order (i.e.&nbsp;Physics first).</li>
+<li>SELECT all students that have an ‘e’ in their name and order them by gpa in ascending order.</li>
+</ol>
+</section>
+<section id="q2-joins" class="level2">
+<h2 class="anchored" data-anchor-id="q2-joins">Q2 Joins</h2>
+<p>Create a new table called courses, which indicates the courses taken by the students.</p>
+<p>Create the table by running:</p>
+<pre><code>CREATE TABLE courses AS
+    SELECT 1 AS course_id, "Python programming" AS course_name, 1 AS student_id, "A" AS grade UNION
+    SELECT 2, "Data Structures", 2, "B" UNION
+    SELECT 3, "Database Systems", 3, "B" UNION
+    SELECT 1, "Python programming", 4, "A" UNION
+    SELECT 4, "Quantum Mechanics", 5, "C" UNION
+    SELECT 1, "Python programming", 6, "F" UNION
+    SELECT 2, "Data Structures", 7, "C" UNION
+    SELECT 3, "Database Systems", 8, "A" UNION
+    SELECT 4, "Quantum Mechanics", 9, "A" UNION
+    SELECT 2, "Data Structures", 10, "F";</code></pre>
+<ol type="1">
+<li>COUNT the number of unique courses.</li>
+<li>JOIN the tables students and courses and COUNT the number of students with the major Computer Science taking the course Python programming.</li>
+<li>JOIN the tables students and courses and select the students who have grades higher than “C”, only show their name, major, gpa, course_name and grade.</li>
+</ol>
+</section>
+<section id="q3-aggregate-functions-numerical-logic-and-grouping" class="level2">
+<h2 class="anchored" data-anchor-id="q3-aggregate-functions-numerical-logic-and-grouping">Q3 Aggregate functions, numerical logic and grouping</h2>
+<ol type="1">
+<li>Find the average gpa of all students.</li>
+<li>SELECT the student with the maximum gpa, display only their student_id, major and gpa</li>
+<li>SELECT the student with the minimum gpa, display only their student_id, major and gpa</li>
+<li>SELECT the students with a gpa greater than 3.6 in the majors of “Physics” and “Engineering”, display only their student_id, major and gpa</li>
+<li>Group the students by their major and retrieve the average grade of each major.</li>
+<li>SELECT the top 2 students with the highest GPA in each major and order the results by major in ascending order, then by GPA in descending order</li>
+</ol>
+</section>
+<section id="your-solution" class="level1">
+<h1>Your solution</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'database.db'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> connection.cursor()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#creating the table </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""CREATE TABLE students AS</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 1 AS student_id, "John" AS name, "Computer Science" AS major, 3.5 AS gpa, </span><span class="ch">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">        "01-01-2022" AS enrollment_date UNION</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 2, "Jane", "Physics", 3.8, "01-02-2022" UNION</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 3, "Bob", "Engineering", 3.0, "01-03-2022" UNION</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 4, "Samantha", "Physics", 3.9, "01-04-2022" UNION</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 5, "James", "Engineering", 3.7, "01-05-2022" UNION</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 6, "Emily", "Computer Science", 3.6, "01-06-2022" UNION</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 7, "Michael", "Computer Science", 3.2, "01-07-2022" UNION</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 8, "Jessica", "Engineering", 3.8, "01-08-2022" UNION</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 9, "Jacob", "Physics", 3.4, "01-09-2022" UNION</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 10, "Ashley", "Physics", 3.9, "01-10-2022";</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>cursor.execute(query)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>&lt;sqlite3.Cursor at 0x11cd68340&gt;</code></pre>
+</div>
+</div>
+<section id="q1-simple-selects-on-the-students-table-1" class="level2">
+<h2 class="anchored" data-anchor-id="q1-simple-selects-on-the-students-table-1">Q1 Simple SELECTS (on the students table)</h2>
+<ol type="1">
+<li>SELECT all records in the table.</li>
+<li>SELECT students whose major is “Computer Science”.</li>
+<li>SELECT all unique majors (use SELECT DISTINCT) and order them by name, descending order (i.e.&nbsp;Physics first).</li>
+<li>SELECT all students that have an ‘e’ in their name and order them by gpa in ascending order.</li>
+</ol>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT all records in the table.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT * FROM students"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>student_id</th>
+      <th>name</th>
+      <th>major</th>
+      <th>gpa</th>
+      <th>enrollment_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>John</td>
+      <td>Computer Science</td>
+      <td>3.5</td>
+      <td>01-01-2022</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Jane</td>
+      <td>Physics</td>
+      <td>3.8</td>
+      <td>01-02-2022</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Bob</td>
+      <td>Engineering</td>
+      <td>3.0</td>
+      <td>01-03-2022</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Samantha</td>
+      <td>Physics</td>
+      <td>3.9</td>
+      <td>01-04-2022</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>James</td>
+      <td>Engineering</td>
+      <td>3.7</td>
+      <td>01-05-2022</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>Emily</td>
+      <td>Computer Science</td>
+      <td>3.6</td>
+      <td>01-06-2022</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Michael</td>
+      <td>Computer Science</td>
+      <td>3.2</td>
+      <td>01-07-2022</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>Jessica</td>
+      <td>Engineering</td>
+      <td>3.8</td>
+      <td>01-08-2022</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Jacob</td>
+      <td>Physics</td>
+      <td>3.4</td>
+      <td>01-09-2022</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>Ashley</td>
+      <td>Physics</td>
+      <td>3.9</td>
+      <td>01-10-2022</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT students whose major is "Computer Science"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT* FROM students WHERE major = 'Computer Science'"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>student_id</th>
+      <th>name</th>
+      <th>major</th>
+      <th>gpa</th>
+      <th>enrollment_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>John</td>
+      <td>Computer Science</td>
+      <td>3.5</td>
+      <td>01-01-2022</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>Emily</td>
+      <td>Computer Science</td>
+      <td>3.6</td>
+      <td>01-06-2022</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>Michael</td>
+      <td>Computer Science</td>
+      <td>3.2</td>
+      <td>01-07-2022</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT all unique majors (use SELECT DISTINCT) and order them by name, descending order (i.e. Physics first).</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT DISTINCT major FROM students ORDER BY name DESC"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>major</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Computer Science</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Physics</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Engineering</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT all students that have an 'e' in their name and order them by gpa in ascending order.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT * FROM students WHERE name LIKE '</span><span class="sc">%e</span><span class="st">%' ORDER BY gpa ASC"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>student_id</th>
+      <th>name</th>
+      <th>major</th>
+      <th>gpa</th>
+      <th>enrollment_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7</td>
+      <td>Michael</td>
+      <td>Computer Science</td>
+      <td>3.2</td>
+      <td>01-07-2022</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>Emily</td>
+      <td>Computer Science</td>
+      <td>3.6</td>
+      <td>01-06-2022</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>James</td>
+      <td>Engineering</td>
+      <td>3.7</td>
+      <td>01-05-2022</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>Jane</td>
+      <td>Physics</td>
+      <td>3.8</td>
+      <td>01-02-2022</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>Jessica</td>
+      <td>Engineering</td>
+      <td>3.8</td>
+      <td>01-08-2022</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>10</td>
+      <td>Ashley</td>
+      <td>Physics</td>
+      <td>3.9</td>
+      <td>01-10-2022</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="q2-joins-1" class="level2">
+<h2 class="anchored" data-anchor-id="q2-joins-1">Q2 Joins</h2>
+<p>Create a new table called courses, which indicates the courses taken by the students.</p>
+<p>Create the table by running:</p>
+<pre><code>CREATE TABLE courses AS
+    SELECT 1 AS course_id, "Python programming" AS course_name, 1 AS student_id, "A" AS grade UNION
+    SELECT 2, "Data Structures", 2, "B" UNION
+    SELECT 3, "Database Systems", 3, "B" UNION
+    SELECT 1, "Python programming", 4, "A" UNION
+    SELECT 4, "Quantum Mechanics", 5, "C" UNION
+    SELECT 1, "Python programming", 6, "F" UNION
+    SELECT 2, "Data Structures", 7, "C" UNION
+    SELECT 3, "Database Systems", 8, "A" UNION
+    SELECT 4, "Quantum Mechanics", 9, "A" UNION
+    SELECT 2, "Data Structures", 10, "F";</code></pre>
+<ol type="1">
+<li>COUNT the number of unique courses.</li>
+<li>JOIN the tables students and courses and COUNT the number of students with the major Computer Science taking the course Python programming.</li>
+<li>JOIN the tables students and courses and select the students who have grades higher than “C”, only show their name, major, gpa, course_name and grade.</li>
+</ol>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""CREATE TABLE courses AS</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 1 AS course_id, "Python programming" AS course_name, 1 AS student_id, "A" AS grade UNION</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 2, "Data Structures", 2, "B" UNION</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 3, "Database Systems", 3, "B" UNION</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 1, "Python programming", 4, "A" UNION</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 4, "Quantum Mechanics", 5, "C" UNION</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 1, "Python programming", 6, "F" UNION</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 2, "Data Structures", 7, "C" UNION</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 3, "Database Systems", 8, "A" UNION</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 4, "Quantum Mechanics", 9, "A" UNION</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT 2, "Data Structures", 10, "F"; """</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>cursor.execute(query)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>&lt;sqlite3.Cursor at 0x11bbc16c0&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># COUNT the number of unique courses.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT COUNT(DISTINCT course_id) AS 'Unique Courses' FROM courses"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unique Courses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># JOIN the tables students and courses and COUNT the number of students with the major </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Computer Science taking the course Python programming.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT COUNT(*) AS 'CSwithPython' FROM students JOIN courses ON </span><span class="ch">\</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">                  students.student_id = courses.student_id WHERE </span><span class="ch">\</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">                  major = 'Computer Science' AND course_name = </span><span class="ch">\</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">                  'Python programming'"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>CSwithPython</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># JOIN the tables students and courses and select the students who have grades </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># higher than "C", only show their name, major, gpa, course_name and grade.</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT name, major, gpa, course_name, grade FROM students </span><span class="ch">\</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">                  JOIN courses ON students.student_id = courses.student_id </span><span class="ch">\</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">                  WHERE grade &lt; 'C'"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>name</th>
+      <th>major</th>
+      <th>gpa</th>
+      <th>course_name</th>
+      <th>grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John</td>
+      <td>Computer Science</td>
+      <td>3.5</td>
+      <td>Python programming</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Samantha</td>
+      <td>Physics</td>
+      <td>3.9</td>
+      <td>Python programming</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Jane</td>
+      <td>Physics</td>
+      <td>3.8</td>
+      <td>Data Structures</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Bob</td>
+      <td>Engineering</td>
+      <td>3.0</td>
+      <td>Database Systems</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jessica</td>
+      <td>Engineering</td>
+      <td>3.8</td>
+      <td>Database Systems</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Jacob</td>
+      <td>Physics</td>
+      <td>3.4</td>
+      <td>Quantum Mechanics</td>
+      <td>A</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="q3-aggregate-functions-numerical-logic-and-grouping-1" class="level2">
+<h2 class="anchored" data-anchor-id="q3-aggregate-functions-numerical-logic-and-grouping-1">Q3 Aggregate functions, numerical logic and grouping</h2>
+<ol type="1">
+<li>Find the average gpa of all students.</li>
+<li>SELECT the student with the maximum gpa, display only their student_id, major and gpa</li>
+<li>SELECT the student with the minimum gpa, display only their student_id, major and gpa</li>
+<li>SELECT the students with a gpa greater than 3.6 in the majors of “Physics” and “Engineering”, display only their student_id, major and gpa</li>
+<li>Group the students by their major and retrieve the average grade of each major.</li>
+<li>SELECT the top 2 students with the highest GPA in each major and order the results by major in ascending order, then by GPA in descending order</li>
+</ol>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the average gpa of all students.</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT AVG(gpa) AS 'Average GPA' FROM students"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Average GPA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.58</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT the student with the maximum gpa, display only their student_id, major and gpa</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT student_id, major, gpa FROM students WHERE gpa = </span><span class="ch">\</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">                    (SELECT MAX(gpa) FROM students)"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>student_id</th>
+      <th>major</th>
+      <th>gpa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>Physics</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>Physics</td>
+      <td>3.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT the student with the minimum gpa, display only their student_id, major and gpa</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT student_id, major, gpa FROM students WHERE gpa = </span><span class="ch">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="st">                    (SELECT MIN(gpa) FROM students)"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>student_id</th>
+      <th>major</th>
+      <th>gpa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>Engineering</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT the students with a gpa greater than 3.6 in the majors of "Physics"</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and "Engineering", display only their student_id, major and gpa</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT student_id, major, gpa FROM students WHERE gpa &gt; 3.6 </span><span class="ch">\</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="st">                    AND major IN ('Physics', 'Engineering')"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>student_id</th>
+      <th>major</th>
+      <th>gpa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>Physics</td>
+      <td>3.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>Physics</td>
+      <td>3.9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>Engineering</td>
+      <td>3.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8</td>
+      <td>Engineering</td>
+      <td>3.8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10</td>
+      <td>Physics</td>
+      <td>3.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group the students by their major and retrieve the average grade of each major.</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT major, AVG(gpa) AS 'Average GPA' FROM students GROUP BY major"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>major</th>
+      <th>Average GPA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Computer Science</td>
+      <td>3.433333</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Engineering</td>
+      <td>3.500000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Physics</td>
+      <td>3.750000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SELECT the top 2 students with the highest GPA in each major and order the</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># results by major in ascending order, then by GPA in descending order</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>pd.read_sql_query(<span class="st">"SELECT * FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY major </span><span class="ch">\</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="st">                    ORDER BY gpa DESC) AS 'Rank' FROM students) WHERE Rank &lt;= 2 </span><span class="ch">\</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="st">                    ORDER BY major ASC, gpa DESC"</span>, con <span class="op">=</span> connection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>student_id</th>
+      <th>name</th>
+      <th>major</th>
+      <th>gpa</th>
+      <th>enrollment_date</th>
+      <th>Rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>Emily</td>
+      <td>Computer Science</td>
+      <td>3.6</td>
+      <td>01-06-2022</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>John</td>
+      <td>Computer Science</td>
+      <td>3.5</td>
+      <td>01-01-2022</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8</td>
+      <td>Jessica</td>
+      <td>Engineering</td>
+      <td>3.8</td>
+      <td>01-08-2022</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>James</td>
+      <td>Engineering</td>
+      <td>3.7</td>
+      <td>01-05-2022</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Samantha</td>
+      <td>Physics</td>
+      <td>3.9</td>
+      <td>01-04-2022</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>10</td>
+      <td>Ashley</td>
+      <td>Physics</td>
+      <td>3.9</td>
+      <td>01-10-2022</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>connection.commit()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>connection.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

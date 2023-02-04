@@ -18,3 +18,7 @@ The website contains all the content regarding TLP 2022-23
 [Intro to DSA](06_Intro_DSA/index.qmd)
 
 [Machine Learning I](07_MachineLearning_I/index.qmd)
+
+[Data Camp](08_DataCamp/index.qmd)
+
+[Projects of DS](09_Projects_DS/index.qmd)
