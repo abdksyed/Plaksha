@@ -11,13 +11,13 @@ def testStack(StackClass):
     stack.push(10)
     stack.push(20)
 
-    assert stack.isEmpty() == False
+    assert stack.isEmpty() is False
     assert stack.pop() == 20
 
-    assert stack.isEmpty() == False
+    assert stack.isEmpty() is False
     assert stack.pop() == 10
 
-    assert stack.pop() == None
+    assert stack.pop() is None
 
     for _ in range(100):
         stack.push(random.randint(0, 100))

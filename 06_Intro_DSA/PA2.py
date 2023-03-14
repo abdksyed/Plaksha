@@ -196,9 +196,9 @@ class HeapPQ:
         self.minHeapifyDown(self.head)
 
     def minHeapifyDown(self, node):
-        if node.left == None and node.right == None:
+        if node.left is None and node.right is None:
             return
-        elif node.right == None:
+        elif node.right is None:
             if node.value > node.left.value:
                 node.value, node.left.value = node.left.value, node.value
             # self.minHeapifyDown(node.left)

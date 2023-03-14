@@ -29,4 +29,4 @@ class StackArrays:
 
     # Returns True is stack is empty, False if not
     def isEmpty(self):
-        return self.size() is 0
+        return self.size() == 0

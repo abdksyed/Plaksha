@@ -41,11 +41,11 @@ class HashTableChain:
 
 def isSubset(arr1, arr2):
     obj = HashTableChain()
-    for I in arr1:
-        obj.insert(I)
+    for i in arr1:
+        obj.insert(i)
 
-    for I in arr2:
-        if not obj.search(I):
+    for i in arr2:
+        if not obj.search(i):
             return False
 
     return True
