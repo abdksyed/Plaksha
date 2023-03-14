@@ -1,0 +1,4 @@
+pillow
+tensorflow
+keras_applications
+boto3
